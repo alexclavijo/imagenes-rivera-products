@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImagenesRivera.Products.Api", "ImagenesRivera.Products.Api\ImagenesRivera.Products.Api.csproj", "{542D57BC-D99F-45D0-A978-2960DF6D7A03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImagenesRivera.Products.KeyChain", "ImagenesRivera.Products.KeyChain\ImagenesRivera.Products.KeyChain.csproj", "{F98445A0-F479-4643-B224-FF1947AF2B06}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{542D57BC-D99F-45D0-A978-2960DF6D7A03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{542D57BC-D99F-45D0-A978-2960DF6D7A03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{542D57BC-D99F-45D0-A978-2960DF6D7A03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{542D57BC-D99F-45D0-A978-2960DF6D7A03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F98445A0-F479-4643-B224-FF1947AF2B06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F98445A0-F479-4643-B224-FF1947AF2B06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F98445A0-F479-4643-B224-FF1947AF2B06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F98445A0-F479-4643-B224-FF1947AF2B06}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3C337619-895F-4B9B-9C51-DA534A385669}
+	EndGlobalSection
+EndGlobal

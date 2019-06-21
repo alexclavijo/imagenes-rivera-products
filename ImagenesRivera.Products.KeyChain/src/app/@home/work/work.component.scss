@@ -1,0 +1,158 @@
+/*=======================================================
+      PORTFOLIO AND TEAM
+========================================================*/
+.work{
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+}
+.team-member{
+	position: relative;
+	overflow: hidden;
+}
+.work-img img, .team-member img {
+	width: 100%;
+}
+.work-img-overlay, .team-member-hover {
+	position: absolute;
+	overflow: hidden;
+	z-index: 1;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	color: #fff;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+.work-img-overlay:after, .team-member-hover:after {
+	content: "";
+	position: absolute;
+	z-index: -1;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(26,35,126,0.8);
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+.work:hover .work-img-overlay:after, .team-member:hover .team-member-hover:after {
+	opacity: 1;
+}
+.work:hover .work-img-overlay, .team-member:hover .team-member-hover {
+	opacity: 1;
+	cursor: pointer;
+}
+.work-info{
+	position: absolute;
+	top: 5%;
+	left: 0;
+	width: 100%;
+	padding: 0 20px;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+.work:hover .work-info, .team-member:hover .team-member-info {
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+.team-member-info{
+	position: absolute;
+	bottom: 10%;
+	left: 0;
+	width: 100%;
+	padding: 0 35px;
+	-webkit-transition: all 300ms ease-out;
+	-moz-transition: all 300ms ease-out;
+	-o-transition: all 300ms ease-out;
+	-ms-transition: all 300ms ease-out;
+	transition: all 300ms ease-out;
+}
+.work-title, .team-member-name {
+	font-size: 30px;
+	color: #fff;
+}
+.work-des, .team-member-spec {
+	font-size: 20px;
+	color: #fff;
+}
+.work-icon-preview {
+	position: absolute;
+	bottom: 4%;
+	opacity: 0;
+	-webkit-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+	right: 4%;
+	font-size: 70px;
+}
+.work:hover .work-icon-preview {
+	opacity: 1;
+	color: #fff;
+}
+.team-member-social{
+	position: relative;
+    bottom: 30px;
+    opacity: 0;
+    -webkit-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    margin-top: 20px;
+}
+.team-member-social a{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    background: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 41px;
+    margin-right: 10px;
+}
+.team-member:hover .team-member-social{
+	opacity: 1;
+    bottom: 0;
+}
+.team-member-social a.fa-facebook{
+	color:#3c599f;
+}
+.team-member-social a.fa-facebook:hover{
+	background:#3c599f;
+	color:#fff;
+}
+.team-member-social a.fa-twitter{
+	color:#00aced;
+}
+.team-member-social a.fa-twitter:hover{
+	background:#00aced;
+	color:#fff;
+}
+.team-member-social a.fa-behance{
+	color:#1769ff;
+}
+.team-member-social a.fa-behance:hover{
+	background:#1769ff;
+	color:#fff;
+}
+.portfolio h2, .about h2, .mission h2{
+	margin-top:60px;
+}
+.work-wrap, .about-wrap, .mission-wrap{
+	margin-top:100px;
+}

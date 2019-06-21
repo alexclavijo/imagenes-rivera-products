@@ -1,0 +1,76 @@
+<div class="icon-bar">
+  <ul class="icon-bar-container">
+    <li><a (click)="playClick()"><i class="fa fa-play"></i></a></li>
+    <li><a (click)="firstClick()"><i class="fa fa-step-backward"></i></a></li>
+    <li><a (click)="prevClick()"><i class="fa fa-backward"></i></a></li>
+    <li><a (click)="nextClick()"><i class="fa fa-forward"></i></a></li>
+    <li><a (click)="lastClick()"><i class="fa fa-step-forward"></i></a></li>
+  </ul>
+</div>
+
+<div class="flipbook-viewport">
+	<div class="container">
+
+		<div class="flipbook card">
+        <div class="hard front" [ngClass]="state.book.skin"></div>
+        <div class="hard front-side"></div>
+        <div class="photo-page size1" *ngFor="let photo of state.book.photos">
+         <img *ngIf="!photo.imageBase64" [src]="photo.defaultUrl">
+         <image-cropper #imageCropper
+              [imageBase64]="photo.imageBase64"
+              [maintainAspectRatio]="false"
+              [aspectRatio]="1/1"
+              [resizeToWidth]="0"
+              [onlyScaleDown]="false"
+              [imageQuality]="92"
+              [autoCrop]="false"
+              [roundCropper]="false"
+              format="png"
+              outputType="base64"
+              (imageCropped)="imageCropped(photo, $event)"
+              (imageLoaded)="imageLoaded()"
+              (cropperReady)="cropperReady()"
+              (loadImageFailed)="loadImageFailed()">
+            </image-cropper>
+         <div class="photo-toolbar">
+            <input id="chosser-{{photo.index}}" style="display: none"  type="file" (change)="fileChangeEvent(photo, $event)" />
+            <ul>
+                <li><a (click)="browseFile(photo)" title="Browse Image"><i class="fa fa-picture-o"></i></a></li>
+                <ng-template [ngIf]="photo.imageBase64">
+                    <li><a (click)="imageCropper.crop()" title="Crop Image"><i class="fa fa-crop"></i></a></li>
+                    <li><a (click)="openImageEditor(photo, imageCropper)"  title="Edit Image on Editor"><i class="fa fa-paint-brush"></i></a>
+                    <li><a (click)="imageCropper.rotateLeft()"  title="Rotate Left"><i class="fa fa-undo"></i></a></li>
+                    <li><a (click)="imageCropper.rotateRight()" title="Rotate Right"><i class="fa  fa-repeat"></i></a></li>
+                    <li><a (click)="imageCropper.flipHorizontal()" title="Flip Horizontal"><i class="fa fa-arrows-h"></i></a></li>
+                    <li><a (click)="imageCropper.flipVertical()" title="Flip Vertical"><i class="fa fa-arrows-v"></i></a></li>
+                </ng-template>
+            </ul>
+         </div>
+      </div>
+      <div class="hard back-side"></div>
+      <div class="hard back" [ngClass]="state.book.skin"></div>
+    </div>
+  </div>
+</div>
+
+<div class="book-skins">
+  <ul class="skins-container">
+    <li class="skin-wrapper" (click)="state.book.skin = 'skin1'" [ngClass]="{ active: state.book.skin === 'skin1' }"><div class="skin skin1"></div></li>
+    <li class="skin-wrapper" (click)="state.book.skin = 'skin2'" [ngClass]="{ active: state.book.skin === 'skin2' }"><div class="skin skin2"></div></li>
+    <li class="skin-wrapper" (click)="state.book.skin = 'skin3'" [ngClass]="{ active: state.book.skin === 'skin3' }"><div class="skin skin3"></div></li>
+  </ul>
+</div>
+
+<p class="text-center">
+    <a class="btn text-uppercase btn-theme-sq" role="button">Create Order</a>
+</p>
+
+<br>
+
+
+
+
+
+
+
+
