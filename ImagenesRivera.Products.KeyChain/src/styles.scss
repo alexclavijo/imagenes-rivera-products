@@ -301,7 +301,7 @@ a:hover, a:focus {
 	height: 27px;
 	width: 35px;
 	cursor: pointer;
-	z-index: 100;
+	z-index: 99999;
 	-webkit-transition: opacity .25s ease;
 	transition: opacity .25s ease;
 }
@@ -406,6 +406,7 @@ a:hover, a:focus {
 	opacity: 0.9;
 	visibility: visible;
 	height: 100%;
+	z-index: 9999;
 }
 .main-overlay.open li {
 	-webkit-animation: fadeInRight .5s ease forwards;
@@ -459,6 +460,8 @@ a:hover, a:focus {
 	text-decoration: none;
 	overflow: hidden;
 	font-family: 'Playfair Display', serif;
+	font-size: 28px;
+    padding: 10px;
 }
 .main-overlay ul li a:hover {
 	color: #1a237e;
@@ -1229,6 +1232,20 @@ a:hover, a:focus {
     font-size: 14px;
     line-height:1;
   }
+
+
+  //Material
+
+  .mdl-js-textfield {
+    &.is-focused{
+      .mdl-textfield__input{
+        outline: none;
+        border-bottom: 0 !important;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
 
 @-webkit-keyframes circle {
   100% {

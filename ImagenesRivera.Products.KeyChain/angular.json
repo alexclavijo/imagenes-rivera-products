@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/material-design-lite/material.min.css",
               "src/assets/template/css/bootstrap.min.css",
               "src/assets/template/css/animate.css",
               "src/assets/template/css/font-awesome.min.css",
@@ -37,6 +38,7 @@
             "scripts": [
               "lib/jquery-1.12.4.min.js",
               "lib/modernizr.2.5.3.min.js",
+              "node_modules/material-design-lite/material.min.js",
               "lib/bootstrap.min.js",
               "lib/jquery.flexslider.js",
               "lib/jquery.stellar.min.js",

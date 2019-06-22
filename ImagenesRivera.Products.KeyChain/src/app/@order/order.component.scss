@@ -1,3 +1,30 @@
 .order-container {
+  margin: 0 auto;
+  width: 80%;
   margin-top: 60px;
+  padding: 40px;
+
+  p{
+    padding: 10px;
+    padding-left: 0;
+   
+  }
+
+ .mdl-textfield {
+   width: 50%;
+ }
+
+ .paypal-checkout-wrapper {
+   margin-top: 10px;
+   width: 30%;
+   z-index: 9; 
+ }
+
+ .order-summary-box{
+    border: 1px solid #ccc;
+    height: 450px;
+    border-radius: 8px;
+ }
+
 }
+
