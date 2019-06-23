@@ -13,6 +13,8 @@ export class OrderComponent implements OnInit {
 
  public payPalConfig: IPayPalConfig;
 
+ public paymentChecked = false;
+
   ngOnInit() {
      this.initPaypalCheckout();
   }

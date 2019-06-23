@@ -27,6 +27,11 @@
    margin-top: 10px;
    width: 85%;
    z-index: 9;
+
+   &.disabled {
+     opacity: .3;
+     pointer-events: none;
+   }
  }
 
  .order-summary-box{

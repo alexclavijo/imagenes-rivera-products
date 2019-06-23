@@ -205,14 +205,20 @@
   background-color: #000; /* Add a hover color */
 }
 
+
+
 .book-skins{
   text-align: center;
   margin: 0 auto;
   width: 100%;
 
+
+
   .skins-container{
     display: inline-block;
     margin-bottom: 20px;
+
+
 
     .skin-wrapper {
       width: 60px;
@@ -238,6 +244,16 @@
       }
     }
 
+  }
+
+}
+.pages-dropdown{
+  margin-left: 20px;
+  select{
+    cursor: pointer;
+    width: 60px;
+    color: #6f6f6f;
+    font-weight: bold;
   }
 
 }

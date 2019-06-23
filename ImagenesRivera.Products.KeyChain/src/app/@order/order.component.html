@@ -40,8 +40,8 @@
                             gathering required information to complete the transaction. Thanks for choosing us.
                         </p>
                         <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input">
-                            <span class="mdl-checkbox__label">I have read and agree to the Terms</span>
+                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" [checked]="paymentChecked" (change)="paymentChecked = !paymentChecked">
+                            <span class="mdl-checkbox__label">I have read and want to proceed with payment</span>
                         </label>
                     </div>
 
@@ -66,7 +66,7 @@
                         <li class="col-xs-8"><strong>Order Total:</strong></li>
                         <li class="col-xs-3"><strong>$51.00</strong></li>
                       </ul>
-                      <div class="paypal-checkout-wrapper">
+                      <div class="paypal-checkout-wrapper" [ngClass]="{ disabled: !paymentChecked }" >
                           <ngx-paypal [config]="payPalConfig"></ngx-paypal>
                       </div>
                     </div>
