@@ -24,7 +24,7 @@ export class EditorComponent extends LoaderComponent implements OnInit, OnDestro
 
 
   ngOnInit(): void {
-    if(!this.state.photo) {
+    if(!this.state.page) {
       alert('No photo found');
       this.router.navigate(['/home']);
     }
@@ -45,7 +45,7 @@ export class EditorComponent extends LoaderComponent implements OnInit, OnDestro
   private initEditor(): void{
     this.editor = new Pixie({
       watermarkText: 'Imagenes Rivera',
-      image: this.state.photo.imageBase64,
+      image: this.state.page.imageBase64,
       ui: {
         openImageDialog: {
           show: false
@@ -58,7 +58,7 @@ export class EditorComponent extends LoaderComponent implements OnInit, OnDestro
 
       },
       onSave: (data, name) => {
-        this.state.photo.imageBase64 = data;
+        this.state.page.imageBase64 = data;
         this.router.navigate(['/my-book']);
       }
     } as IImageEditorSettings);

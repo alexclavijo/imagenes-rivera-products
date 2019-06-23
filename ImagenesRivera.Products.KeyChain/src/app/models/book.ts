@@ -1,7 +1,7 @@
-import { IPhoto } from './photo';
+import { IPage } from './page';
 
 export interface IBook {
    title: string;
    skin: string;
-   photos: IPhoto[];
+   pages: IPage[];
 }

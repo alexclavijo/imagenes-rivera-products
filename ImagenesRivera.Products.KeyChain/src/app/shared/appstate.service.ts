@@ -1,4 +1,4 @@
-import { IPhoto } from '../models/photo';
+import { IPage } from '../models/page';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IUser, IBook } from '../models';
@@ -8,7 +8,7 @@ export class AppStateService {
 
   public user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>(null);
 
-  public photo: IPhoto;
+  public page: IPage;
 
   public book: IBook;
 

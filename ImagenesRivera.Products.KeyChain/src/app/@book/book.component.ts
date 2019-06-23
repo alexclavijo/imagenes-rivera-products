@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { IBookOptions } from './book.options';
 import { AppStateService } from './../shared/appstate.service';
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { IBook, IPhoto } from '../models';
+import { IBook, IPage } from '../models';
 import { ImageCroppedEvent, ImageCropperComponent } from 'ngx-image-cropper';
 
 declare var $: any;
@@ -23,7 +23,7 @@ export class BookComponent implements OnInit, AfterViewInit {
       this.state.book = {
         title: 'test',
         skin: 'skin1',
-        photos: [
+        pages: [
           { id: new Date().getTime(), index: 1, defaultUrl: '/assets/template/images/team/member-01.jpg', text: 'page1'},
           { id: new Date().getTime(), index: 2, defaultUrl: '/assets/template/images/team/member-02.jpg', text: 'page2'},
           { id: new Date().getTime(), index: 3, defaultUrl: '/assets/template/images/team/member-03.jpg', text: 'page3'},
@@ -49,9 +49,9 @@ export class BookComponent implements OnInit, AfterViewInit {
     this.$flipBook.turn(options);
   }
 
-  openImageEditor(photo: IPhoto, cropper: ImageCropperComponent) {
+  openImageEditor(page: IPage, cropper: ImageCropperComponent) {
     cropper.crop();
-    this.state.photo = photo;
+    this.state.page = page;
     this.router.navigate(['/image-editor']);
   }
 
@@ -72,21 +72,21 @@ export class BookComponent implements OnInit, AfterViewInit {
   }
 
   lastClick(): void {
-    this.$flipBook.turn('page', this.state.book.photos.length + 4);
+    this.$flipBook.turn('page', this.state.book.pages.length + 4);
   }
 
-  fileChangeEvent(photo: IPhoto, event: any): void {
+  fileChangeEvent(page: IPage, event: any): void {
       const file = event.target.files[0];
       const myReader  = new FileReader();
       myReader.onloadend = (e) => {
-        photo.imageBase64 = myReader.result.toString();
+        page.imageBase64 = myReader.result.toString();
       };
       myReader.readAsDataURL(file);
   }
 
 
-  imageCropped(photo: IPhoto, event: ImageCroppedEvent) {
-      photo.imageBase64 = event.base64;
+  imageCropped(page: IPage, event: ImageCroppedEvent) {
+      page.imageBase64 = event.base64;
   }
   imageLoaded() {
       // show cropper
@@ -98,7 +98,7 @@ export class BookComponent implements OnInit, AfterViewInit {
       // show message
   }
 
-  browseFile(photo: IPhoto) {
-    $('#chosser-' + photo.index).click();
+  browseFile(page: IPage) {
+    $('#chosser-' + page.index).click();
   }
 }

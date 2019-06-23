@@ -1,5 +1,5 @@
 
-export interface IPhoto {
+export interface IPage {
   id: number;
   index: number;
   text?: string;

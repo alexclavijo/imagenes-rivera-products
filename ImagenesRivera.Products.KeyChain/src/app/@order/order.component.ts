@@ -1,6 +1,6 @@
 import { IUser } from './../models/user';
 import { Component, OnInit } from '@angular/core';
-import { IPayPalConfig, ICreateOrderRequest, IPayer } from 'ngx-paypal';
+import { IPayPalConfig, ICreateOrderRequest, IPayer, IClientAuthorizeCallbackData } from 'ngx-paypal';
 
 @Component({
   selector: 'app-order',
@@ -25,7 +25,6 @@ export class OrderComponent implements OnInit {
       clientId: 'sb',
       createOrderOnClient: (data) => <ICreateOrderRequest> {
         intent: 'CAPTURE',
-        //payer: this.user,
         purchase_units: [{
           amount: {
             currency_code: 'USD',
@@ -57,12 +56,13 @@ export class OrderComponent implements OnInit {
         layout: 'vertical'
       },
       onApprove: (data, actions) => {
+
         console.log('onApprove - transaction was approved, but not authorized', data, actions);
         actions.order.get().then(details => {
           console.log('onApprove - you can get full order details inside onApprove: ', details);
         });
       },
-      onClientAuthorization: (data) => {
+      onClientAuthorization: (data: IClientAuthorizeCallbackData) => {
         console.log('onClientAuthorization - you should probably inform your server about completed transaction at this point', data);
       },
       onShippingChange: (data, actions) => {
