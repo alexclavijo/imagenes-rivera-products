@@ -8,7 +8,7 @@
                     <div class="col-md-12">
                         <p>
                           Dear customer, your contact information is required to be attached along with the order. We will contact you
-                          in case we need to ask for any additional information regarding your product.
+                          in case we need to ask for additional information regarding your product.
                         </p>
                         <form action="#">
                             <ul>
@@ -34,9 +34,7 @@
                         </form>
                     </div>
                     <div class="col-md-12">
-                        <div class="paypal-checkout-wrapper">
-                            <ngx-paypal [config]="payPalConfig"></ngx-paypal>
-                        </div>
+
                         <p class="terms">
                             All our transactions are secured by Paypal. Once you select a checkout option, you will be redirected to a Paypal interface to process the payment as well as
                             gathering required information to complete the transaction. Thanks for choosing us.
@@ -55,6 +53,22 @@
                 <div class="row order-summary-box">
                     <div class="col-md-12">
 
+                      <ul class="row">
+                        <li class="col-md-12 img-wrapper">
+                          <img src="/assets/images/keychain1.jpg" width="150">
+                        </li>
+                        <li class="col-xs-8">Subtotal:</li>
+                        <li class="col-xs-3">$50.00</li>
+                        <li class="col-xs-8">Shipping:</li>
+                        <li class="col-xs-3">$0.00</li>
+                        <li class="col-xs-8">Tax:</li>
+                        <li class="col-xs-3">$1.00</li>
+                        <li class="col-xs-8"><strong>Order Total:</strong></li>
+                        <li class="col-xs-3"><strong>$51.00</strong></li>
+                      </ul>
+                      <div class="paypal-checkout-wrapper">
+                          <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+                      </div>
                     </div>
                 </div>
             </div>

@@ -9,12 +9,12 @@ $(document).ready(function() {
 
 
   	/*-------------------------------------------------------------------------------
-	  Detect mobile device 
+	  Detect mobile device
 	-------------------------------------------------------------------------------*/
 
 
 
-	var mobileDevice = false; 
+	var mobileDevice = false;
 
 	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
 	  	$('html').addClass('mobile');
@@ -39,7 +39,7 @@ $(document).ready(function() {
 		$('.loader').fadeOut();
 
     	var wow = new WOW({
-		    offset: 100,          
+		    offset: 100,
 		    mobile: false
 		  }
 		);
@@ -58,7 +58,7 @@ $(document).ready(function() {
 				$(this).addClass("animated");
 				$(this).width($(this).attr("data-width") + "%");
 			}
-			
+
 		});
 	}
 
@@ -71,22 +71,22 @@ $(document).ready(function() {
 
 
 	function counter() {
-		
+
 		if (typeof $.fn.jQuerySimpleCounter !== 'undefined') {
-		
+
 			$(".counter .counter-value:in-viewport").each(function() {
-				
+
 				if (!$(this).hasClass("animated")) {
 					$(this).addClass("animated");
 					$(this).jQuerySimpleCounter({
 						start: 0,
 						end: $(this).attr("data-value"),
 						duration: 2000
-					});	
+					});
 				}
-			
+
 			});
-			
+
 		}
 	}
 
@@ -98,30 +98,30 @@ $(document).ready(function() {
 
 
 
-	$(window).scroll(function() {
-		progress_bars();
-		counter();
-	});
-	
+	// $(window).scroll(function() {
+	// 	progress_bars();
+	// 	counter();
+	// });
+
 	/*-------------------------------------------------------------------------------
 	  Flex Slider
 	-------------------------------------------------------------------------------*/
-	
+
 	$('.slider-bg').flexslider({
 		mode: 'fade',
 		auto: true,
 		controlNav: false,
 		keyboard: true
 	});
-	
+
 	/*-------------------------------------------------------------------------------
 	  Parallax
 	-------------------------------------------------------------------------------*/
-	
-	jQuery.stellar({
-	   horizontalScrolling: false,
-	   scrollProperty: 'scroll',
-	   positionProperty: 'position',
-	});
-	
+
+	// jQuery.stellar({
+	//    horizontalScrolling: false,
+	//    scrollProperty: 'scroll',
+	//    positionProperty: 'position',
+	// });
+
 })(jQuery);

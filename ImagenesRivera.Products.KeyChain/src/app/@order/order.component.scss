@@ -1,29 +1,43 @@
 .order-container {
   margin: 0 auto;
   width: 80%;
-  margin-top: 60px;
+  margin-top: 100px;
+  margin-bottom: 40px;
   padding: 40px;
+  background: white;
+  -webkit-box-shadow: 5px 5px 15px 5px #ccc;
+  box-shadow: 5px 5px 15px 5px #ccc;
 
   p{
     padding: 10px;
     padding-left: 0;
-   
+
   }
 
  .mdl-textfield {
    width: 50%;
  }
 
+ .img-wrapper{
+   text-align: center;
+ }
+
  .paypal-checkout-wrapper {
+   margin: 0 auto;
    margin-top: 10px;
-   width: 30%;
-   z-index: 9; 
+   width: 85%;
+   z-index: 9;
  }
 
  .order-summary-box{
     border: 1px solid #ccc;
-    height: 450px;
-    border-radius: 8px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+
+    ul{
+      text-align: right;
+    }
+
  }
 
 }

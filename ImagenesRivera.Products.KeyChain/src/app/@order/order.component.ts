@@ -9,7 +9,7 @@ import { IPayPalConfig, ICreateOrderRequest, IPayer } from 'ngx-paypal';
 })
 export class OrderComponent implements OnInit {
 
-  public user: IPayer = {};
+ public user: IPayer = {};
 
  public payPalConfig: IPayPalConfig;
 
