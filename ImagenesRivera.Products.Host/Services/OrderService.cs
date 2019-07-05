@@ -1,5 +1,7 @@
 ﻿
-using ImagenesRivera.Products.Models;
+using ImagenesRivera.Products.Data.Entities;
+using ImagenesRivera.Products.Data.Repository;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,18 +11,22 @@ namespace ImagenesRivera.Products.Services
 {
     public interface IOrderService
     {
-       bool ProcessOrder(OrderDetails order);
+       bool ProcessOrder(Order order);
+
+       List<Order> GetOrders();
     }
 
     public class OrderService : IOrderService
     {
         private readonly IEmailService _emailService;
+        private readonly IGlobalRepository<Order> _ordersRepository;
 
-        public OrderService(IEmailService emailService) {
+        public OrderService(IGlobalRepository<Order> ordersRepository, IEmailService emailService) {
+            _ordersRepository = ordersRepository;
             _emailService = emailService;
         }
 
-        public bool ProcessOrder(OrderDetails order)
+        public bool ProcessOrder(Order order)
         {
             switch (order.Status)
             {
@@ -43,35 +49,35 @@ namespace ImagenesRivera.Products.Services
             return false;
         }
 
-        private bool ProcessOrderCompleted(OrderDetails order)
+        private bool ProcessOrderCompleted(Order order)
         {
-            order.Products.ForEach(p =>
-            {
-                if (p.Data is KeyChainBook)
-                {
-                    KeyChainBook book = p.Data as KeyChainBook;
-                    PackKeyChainBook(book);
-                }
-            });
+            //order.Products.ForEach(p =>
+            //{
+            //    if (p.Data is KeyChainBook)
+            //    {
+            //        KeyChainBook book = p.Data as KeyChainBook;
+            //        PackKeyChainBook(book);
+            //    }
+            //});
             return false;
         }
 
-        private bool ProcessOrderApproved(OrderDetails order)
+        private bool ProcessOrderApproved(Order order)
         {          
             return false;
         }
 
-        private bool ProcessOrderCreated(OrderDetails order)
+        private bool ProcessOrderCreated(Order order)
         {
             return false;
         }
 
-        private bool ProcessOrderSaved(OrderDetails order)
+        private bool ProcessOrderSaved(Order order)
         {
             return false;
         }
 
-        private bool ProcessOrderVoided(OrderDetails order)
+        private bool ProcessOrderVoided(Order order)
         {
             return false;
         }
@@ -80,6 +86,15 @@ namespace ImagenesRivera.Products.Services
         {
             
             return false;
-        } 
+        }
+
+        public List<Order> GetOrders()
+        {
+            return _ordersRepository.Entity.Include(O => O.Payer)
+                                           .Include(O => O.Shipping)
+                                           .Include(O => O.Products)
+                                           .OrderBy(O => O.CreatedOn)
+                                           .ToList();
+        }
     }
 }

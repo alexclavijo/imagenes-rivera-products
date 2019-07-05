@@ -1,0 +1,7 @@
+﻿drop table [dbo].[__EFMigrationsHistory]
+drop table [dbo].[KeyChainBookPage]
+drop table [dbo].[ProductOrders]
+drop table [dbo].[Shipping]
+drop table [dbo].[Products]
+drop table [dbo].[Orders]
+drop table [dbo].[Customers]

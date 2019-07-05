@@ -1,4 +1,5 @@
-﻿using ImagenesRivera.Products.Models;
+﻿using ImagenesRivera.Products.Data.Entities;
+using ImagenesRivera.Products.Models;
 using ImagenesRivera.Products.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -34,7 +35,7 @@ namespace ImagenesRivera.Products.Api.Controllers
         {
             try
             {
-                _orderService.ProcessOrder(order);
+               // _orderService.ProcessOrder(order);
             }
             catch {
 

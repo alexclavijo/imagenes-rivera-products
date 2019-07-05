@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ImagenesRivera.Products.Data;
+using ImagenesRivera.Products.Data.Entities;
+using ImagenesRivera.Products.Data.Repository;
 using ImagenesRivera.Products.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -34,13 +38,18 @@ namespace ImagenesRivera.Products.Host
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            //EF
+            services.AddDbContext<DataContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("WinHostDBOrders")));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            //Gloabl Repo
+            services.AddScoped(typeof(IGlobalRepository<>), typeof(GlobalRepository<>));
 
             // Services
             services.AddSingleton<IEmailService, EmailService>();
             services.AddSingleton<IOrderService, OrderService>();
+
+            //MVC
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Razor Engine
             services.Configure<RazorViewEngineOptions>(engineOptions =>
