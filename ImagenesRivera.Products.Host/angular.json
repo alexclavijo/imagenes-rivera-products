@@ -1,0 +1,115 @@
+{
+  "$schema": "./node_modules/@angular/cli/ClientApps/keychain/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "keychain": {
+      "root": "ClientApps/keychain",
+      "sourceRoot": "ClientApps/keychain/src",
+      "projectType": "application",
+      "prefix": "app",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "wwwroot/keychain",
+            "baseHref" : "/keychain/",
+            "deployUrl": "/keychain/",
+            "index": "ClientApps/keychain/src/index.html",
+            "main": "ClientApps/keychain/src/main.ts",
+            "polyfills": "ClientApps/keychain/src/polyfills.ts",
+            "tsConfig": "ClientApps/keychain/tsconfig.app.json",
+            "assets": [
+              "ClientApps/keychain/src/favicon.ico",
+              "ClientApps/keychain/src/assets"
+            ],
+            "styles": [
+              "node_modules/material-design-lite/material.min.css",
+              "ClientApps/keychain/src/assets/template/css/bootstrap.min.css",
+              "ClientApps/keychain/src/assets/template/css/animate.css",
+              "ClientApps/keychain/src/assets/template/css/font-awesome.min.css",
+              "ClientApps/keychain/src/assets/template/css/flaticon.css",
+              "ClientApps/keychain/src/styles.scss",
+              "ClientApps/keychain/src/assets/template/css/responsive.css"
+            ],
+            "scripts": [
+              "ClientApps/keychain/lib/jquery-1.12.4.min.js",
+              "ClientApps/keychain/lib/modernizr.2.5.3.min.js",
+              "node_modules/material-design-lite/material.min.js",
+              "ClientApps/keychain/lib/bootstrap.min.js",
+              "ClientApps/keychain/lib/jquery.flexslider.js",
+              "ClientApps/keychain/lib/jquery.stellar.min.js",
+              "ClientApps/keychain/lib/jquery.viewport.js",
+              "ClientApps/keychain/lib/jQuerySimpleCounter.js",
+              "ClientApps/keychain/lib/jquery.lighter.js",
+              "ClientApps/keychain/lib/wow.min.js",
+              "ClientApps/keychain/lib/turn.js",
+              "ClientApps/keychain/lib/app.scripts.js"
+            ],
+            "es5BrowserSupport": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "ClientApps/keychain/src/environments/environment.ts",
+                  "with": "ClientApps/keychain/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "keychain:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "keychain:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "keychain:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "ClientApps/keychain/src/tsconfig.app.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "keychain"
+}

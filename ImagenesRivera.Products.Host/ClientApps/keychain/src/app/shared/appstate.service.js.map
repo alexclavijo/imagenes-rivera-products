@@ -1,0 +1,1 @@
+{"version":3,"file":"appstate.service.js","sourceRoot":"","sources":["appstate.service.ts"],"names":[],"mappings":";AACA,OAAO,EAAE,UAAU,EAAE,MAAM,eAAe,CAAC;AAC3C,OAAO,EAAE,eAAe,EAAE,MAAM,MAAM,CAAC;AAIvC,IAAa,eAAe,GAA5B,MAAa,eAAe;IAD5B;QAGS,SAAI,GAA2B,IAAI,eAAe,CAAQ,IAAI,CAAC,CAAC;IAMzE,CAAC;CAAA,CAAA;AARY,eAAe;IAD3B,UAAU,EAAE;GACA,eAAe,CAQ3B;SARY,eAAe"}

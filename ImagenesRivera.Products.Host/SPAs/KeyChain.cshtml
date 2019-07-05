@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["BaseRef"] = "/keychain/";
+    ViewData["Title"] = "Key Chain Book";
+}
+
+@section Head {
+    <script src="/c4admin/assets/scripts/mprogress.min.js"></script>
+}
+
+<app-root></app-root>
+
+@section Scripts {
+    @* //Set here global app settings coming from server to be injected in angular app environment  *@
+    <script type="text/javascript">
+        var $global = {
+
+        };
+    </script>
+}

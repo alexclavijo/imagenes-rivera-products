@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <base href="@ViewData["BaseRef"]">
+    <title>@ViewData["Title"]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    @foreach (var metaTag in ViewBag.Metas)
+    {
+        @Html.Raw(metaTag)
+    }
+
+    @foreach (var linkTag in ViewBag.Links)
+    {
+        @Html.Raw(linkTag)
+    }
+
+    @foreach (var styleTag in ViewBag.Styles)
+    {
+        @Html.Raw(styleTag)
+    }
+
+    @RenderSection("Head", required: false)
+
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+    
+
+    @foreach (var scriptTag in ViewBag.Scripts)
+    {
+        @Html.Raw(scriptTag)
+    }
+   
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

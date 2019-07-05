@@ -1,0 +1,29 @@
+<!-- =====================HEADER===================== -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+            <div class="navbar-header">
+              <a class="navbar-brand" [routerLink]="['/home']">
+              <img class="img-responsive" class="logo" src="/keychain/assets/template/images/logo.png" alt="logo"/></a>
+            </div>
+            <div class="menu-trigger" id="collopse-button">
+              <span class="top"></span>
+              <span class="middle"></span>
+              <span class="bottom"></span>
+            </div>
+        </div><!--- END COL -->
+     </div><!--- END ROW -->
+  </div><!--- END CONTAINER -->
+</nav><!-- END NAVBAR -->
+
+<div class="main-overlay" id="overlay-menu">
+<nav class="overlay-menu">
+<ul>
+  <li><a [routerLink]="['/home']">Home</a></li>
+  <li><a [routerLink]="['/about-us']">About Us</a></li>
+  <li><a [routerLink]="['/contact-us']">Contact Us</a></li>
+</ul>
+</nav><!-- END OVERLAY MENU -->
+</div><!-- END MAIN OVERLAY -->
+<!-- =====================END HEADER===================== -->
