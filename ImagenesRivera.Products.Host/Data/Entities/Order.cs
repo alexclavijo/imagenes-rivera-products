@@ -25,6 +25,5 @@ namespace ImagenesRivera.Products.Data.Entities
         public Payer Payer { get; set; }
         public List<ProductOrders> Products { get; set; }
 
-
     }
 }

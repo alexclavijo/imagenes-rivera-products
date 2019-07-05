@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ImagenesRivera.Products.Host.Core
+namespace ImagenesRivera.Products.Core
 {
     public static class DOMHtmlElementTypes {
         public const string Script = "script";

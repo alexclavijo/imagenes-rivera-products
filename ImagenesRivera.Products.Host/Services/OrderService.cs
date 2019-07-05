@@ -11,9 +11,9 @@ namespace ImagenesRivera.Products.Services
 {
     public interface IOrderService
     {
-       bool ProcessOrder(Order order);
-
-       List<Order> GetOrders();
+        bool ProcessOrder(Order order);
+        Order Get(string orderId);
+        List<Order> GetOrders();
     }
 
     public class OrderService : IOrderService
@@ -96,5 +96,14 @@ namespace ImagenesRivera.Products.Services
                                            .OrderBy(O => O.CreatedOn)
                                            .ToList();
         }
+
+        public Order Get(string orderId)
+        {
+            return _ordersRepository.Entity.Include(O => O.Payer)
+                                           .Include(O => O.Shipping)
+                                           .Include(O => O.Products)
+                                           .SingleOrDefault(O => O.OrderID == orderId);
+        }
+        
     }
 }

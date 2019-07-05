@@ -1,5 +1,4 @@
-﻿using ImagenesRivera.Products.Data.Entities;
-using ImagenesRivera.Products.Models;
+﻿using ImagenesRivera.Products.Models;
 using ImagenesRivera.Products.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -23,6 +22,8 @@ namespace ImagenesRivera.Products.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<OrderDetails>> Get()
         {
+            var orders = _orderService.GetOrders();
+                
             return Ok();
         }
 
@@ -41,5 +42,7 @@ namespace ImagenesRivera.Products.Api.Controllers
 
             }
         }
+
+       
     }
 }

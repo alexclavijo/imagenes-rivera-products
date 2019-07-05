@@ -1,4 +1,4 @@
-﻿using ImagenesRivera.Products.Host.Core;
+﻿using ImagenesRivera.Products.Core;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ImagenesRivera.Products.Host.Controllers.SPAs

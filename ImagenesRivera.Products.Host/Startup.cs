@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ImagenesRivera.Products.Data;
-using ImagenesRivera.Products.Data.Entities;
+﻿using ImagenesRivera.Products.Data.Entities;
 using ImagenesRivera.Products.Data.Repository;
 using ImagenesRivera.Products.Services;
+using jsreport.AspNetCore;
+using jsreport.Binary;
+using jsreport.Local;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
@@ -49,13 +46,20 @@ namespace ImagenesRivera.Products.Host
             services.AddSingleton<IOrderService, OrderService>();
 
             //MVC
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //Reporting
+            services.AddJsReport(new LocalReporting()
+                    .UseBinary(JsReportBinary.GetBinary())
+                    .AsUtility()
+                    .Create());
 
             //Razor Engine
             services.Configure<RazorViewEngineOptions>(engineOptions =>
             {
-                engineOptions.ViewLocationFormats.Add("/SPAs/{0}.cshtml");
-                engineOptions.ViewLocationFormats.Add("/SPAs/Shared/{0}.cshtml");
+                engineOptions.ViewLocationFormats.Add("/Views/SPAs/{0}.cshtml");
+                engineOptions.ViewLocationFormats.Add("/Views/SPAs/Shared/{0}.cshtml");
+                engineOptions.ViewLocationFormats.Add("/Views/Reports/{0}.cshtml");
             });
 
             // Register the Swagger generator, defining 1 or more Swagger documents
