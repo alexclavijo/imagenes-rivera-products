@@ -1,0 +1,10 @@
+<div class="page-container">
+    <lib-cropper [imageFile]="image" 
+                 [options]="options"
+                 (init)="onCropperInit($event)"
+                 (crop)="onCrop($event)"
+                 (zoom)="onZoom($event)"
+                 (fileChange)="onFileChange($event)" 
+                 (fail)="onFail($event)" >
+    </lib-cropper>
+</div>

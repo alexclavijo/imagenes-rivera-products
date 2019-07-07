@@ -1,0 +1,17 @@
+.img-item-container{
+    border: 1px solid #ccc;
+    margin: 0;
+    margin-top: 5px;
+    padding: 5px;
+    cursor: pointer;
+
+    .item-header{
+        text-align: right;
+        background: #ff4081;
+        color: white;
+    }
+
+    img {
+        height: 100px;
+    }
+}

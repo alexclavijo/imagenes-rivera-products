@@ -1,4 +1,5 @@
-﻿using ImagenesRivera.Products.Data.Entities;
+﻿using ImagenesRivera.Products.Core;
+using ImagenesRivera.Products.Data.Entities;
 using ImagenesRivera.Products.Data.Repository;
 using ImagenesRivera.Products.Services;
 using jsreport.AspNetCore;
@@ -38,11 +39,14 @@ namespace ImagenesRivera.Products.Host
             //EF
             services.AddDbContext<DataContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("WinHostDBOrders")));
 
-            //Gloabl Repo
+            //Email Sending
+            services.AddSingleton<EmailSender>();
+
+            //Global Repository
             services.AddScoped(typeof(IGlobalRepository<>), typeof(GlobalRepository<>));
 
             // Services
-            services.AddSingleton<IEmailService, EmailService>();
+            services.AddSingleton<INotificationService, NotificationService>();
             services.AddSingleton<IOrderService, OrderService>();
 
             //MVC

@@ -1,0 +1,12 @@
+.images-chooser {
+    min-height: 500px;
+    border: 2px dashed gray;
+    position: relative;
+    
+
+    .add-btn{
+        position: absolute;
+        bottom: 5px;
+        right: 5px;
+    }
+}

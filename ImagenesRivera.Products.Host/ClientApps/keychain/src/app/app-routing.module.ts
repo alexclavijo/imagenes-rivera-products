@@ -30,10 +30,10 @@ const routes: Routes = [
     path: 'my-book',
     component: BookComponent
   },
-  {
-    path: 'image-editor',
-    component: EditorComponent
-  },
+  // {
+  //   path: 'image-editor',
+  //   component: EditorComponent
+  // },
   {
     path: 'order',
     component: OrderComponent

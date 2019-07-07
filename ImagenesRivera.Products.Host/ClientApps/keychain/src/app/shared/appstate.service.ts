@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { IUser, IBook } from '../models';
 
+declare let componentHandler: any;
 @Injectable()
 export class AppStateService {
 
@@ -11,5 +12,10 @@ export class AppStateService {
   public page: IPage;
 
   public book: IBook;
+
+  // Metrial Design Lite
+  public updateMDL(): void {
+    componentHandler.upgradeDom();
+  }
 
 }

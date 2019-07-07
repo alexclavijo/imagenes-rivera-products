@@ -1,0 +1,39 @@
+<div class="pages-carousel">
+    
+    <carousel>
+      <slide>
+         Front
+      </slide>
+      <slide>
+          <app-book-pagecropper></app-book-pagecropper>
+      </slide>
+      <slide>
+          <app-book-pagecropper></app-book-pagecropper>
+      </slide>
+      <slide>
+          Back
+       </slide>
+    </carousel>
+    
+    <div class="pages-carousel-options">
+
+    </div>
+</div>
+
+<div class="page-layouts">
+    <div class="row ">
+        <div class="col-xs-6 page-layout" (click)="layoutSelected = 1" [ngClass]="{selected:  layoutSelected === 1}" >
+          <div class="page">One</div>
+        </div>
+        <div class="col-xs-6 page-layout" (click)="layoutSelected = 2" [ngClass]="{selected:  layoutSelected === 2}">
+          <div class="row">
+              <div class="col-xs-6 page">One</div>
+              <div class="col-xs-6 page">Two</div>
+          </div>
+        </div>
+    </div>
+</div>
+
+
+
+

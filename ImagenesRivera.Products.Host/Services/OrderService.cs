@@ -11,22 +11,22 @@ namespace ImagenesRivera.Products.Services
 {
     public interface IOrderService
     {
-        bool ProcessOrder(Order order);
+        bool Process(Order order);
         Order Get(string orderId);
         List<Order> GetOrders();
     }
 
     public class OrderService : IOrderService
     {
-        private readonly IEmailService _emailService;
+        private readonly INotificationService _notificationService;
         private readonly IGlobalRepository<Order> _ordersRepository;
 
-        public OrderService(IGlobalRepository<Order> ordersRepository, IEmailService emailService) {
+        public OrderService(IGlobalRepository<Order> ordersRepository, INotificationService notificationService) {
             _ordersRepository = ordersRepository;
-            _emailService = emailService;
+            _notificationService = notificationService;
         }
 
-        public bool ProcessOrder(Order order)
+        public bool Process(Order order)
         {
             switch (order.Status)
             {

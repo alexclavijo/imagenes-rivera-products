@@ -1,29 +1,26 @@
-﻿using RazorLight;
+﻿using Microsoft.Extensions.Configuration;
+using RazorLight;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace ImagenesRivera.Products.Services
+namespace ImagenesRivera.Products.Core
 {
-    public class EmailData {
-        public string From { get; set; }
-        public List<string> To { get; set; }
-        public string Subject { get; set; }
-        public string RazorViewName { get; set; }
-        public object RazorViewModel { get; set; }
-    }
 
-    public interface IEmailService {
-        Task SendAsync(EmailData emailData);
-    }
-
-    public class EmailService : IEmailService
+    public class EmailSender
     {
-        public async Task SendAsync(EmailData emailData) {
+        private readonly IConfiguration _config;
+
+        public EmailSender(IConfiguration configuration)
+        {
+            _config = configuration;
+        }
+
+        public async Task SendAsync(EmailData emailData)
+        {
             SmtpClient client = new SmtpClient("mysmtpserver");
             client.UseDefaultCredentials = false;
             client.Credentials = new NetworkCredential("username", "password");
@@ -37,7 +34,8 @@ namespace ImagenesRivera.Products.Services
             await client.SendMailAsync(mailMessage);
         }
 
-        private string GenerateBodyHtml(string viewName, object model) {
+        private string GenerateBodyHtml(string viewName, object model)
+        {
             IRazorLightEngine _razor = EngineFactory.CreatePhysical($@"{Directory.GetCurrentDirectory()}\Views\Email");
             return _razor.Parse($"{viewName}.cshtml", model);
         }

@@ -29,7 +29,7 @@ import { BookModule } from './@book/book.module';
     AppRoutingModule,
     HomeModule,
     BookModule,
-    EditorModule,
+    // EditorModule,
     OrderModule,
     AboutModule,
     ContactModule

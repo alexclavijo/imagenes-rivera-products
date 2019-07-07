@@ -1,0 +1,15 @@
+<div class="img-item-container">
+    <div class="item-header">
+        <button id="menu-lower-left-{{index}}" class="mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">more_vert</i>
+        </button>
+        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" attr.for="menu-lower-left-{{index}}">
+            <li class="mdl-menu__item">Add this Photo</li>
+            <li class="mdl-menu__item">Remove Photo</li>
+        </ul>
+    </div>
+    <div class="item-body">
+        <img [src]="image" width="100%"> 
+    </div>
+</div>
+
