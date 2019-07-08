@@ -1,3 +1,7 @@
-<div class="skin-chooser">
-  
-</div>
+<ul class="row skin-chooser">
+     <li *ngFor="let skin of skins; let i = index" class="col">
+         <div (click)="skinSelected = i" [ngClass]="{ 'selected': skinSelected === i}">
+             {{skin}}
+         </div>
+     </li>
+</ul>

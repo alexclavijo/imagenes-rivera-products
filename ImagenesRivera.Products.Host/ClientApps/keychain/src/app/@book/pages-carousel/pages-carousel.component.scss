@@ -6,19 +6,20 @@
 .page-layouts{
     padding: 10px;
     margin: 0 auto;
-    width: 33.3%;
+    width: 50%;
 
     .page-layout {
 
         &.selected{
            .page{
+             border: 1px solid gray;
              background: #ccc;
            }
         }
 
         .page {
             cursor: pointer;
-            border: 2px dashed gray;
+            border: 2px dashed #ccc;
             height: 100px;
             line-height: 100px;
             text-align: center;

@@ -1,11 +1,15 @@
 <div class="row images-chooser" >
-   <div *ngFor="let img of images; let i = index" class="col-xs-6 col-md-4">
-        <app-book-imageitem [index]="i" [image]="img"></app-book-imageitem>
-   </div>
+  
    <button (click)="imgSelector.click()" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
             <i class="material-icons">add_photo_alternate</i>
             <input #imgSelector type='file' (change)="onSelectFile($event)" multiple [hidden]="true">
    </button>
+
+   <div class="images-container">
+      <div *ngFor="let img of images; let i = index" class="col-xs-4 col-md-3">
+            <app-book-imageitem [index]="i" [image]="img"></app-book-imageitem>
+      </div>
+   </div>
    
 </div>
     

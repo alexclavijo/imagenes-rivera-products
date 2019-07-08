@@ -4,26 +4,7 @@
       THEME STYLING START
 ========================================================*/
 
-@mixin custom-scrollbar($width, $border-radius) {
-
-  &::-webkit-scrollbar {
-      width: $width;
-      background: transparent;
-  }
-
-  &::-webkit-scrollbar-track {
-      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      border-radius: $border-radius;
-      z-index: 99999;
-  }
-
-  &::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      background-color: rgba(30,30,30, 0.9);
-      opacity: 0.8;
-      outline: none;
-  }
-}
+@import 'scss/mixin';
 
 * {
 	margin: 0px;

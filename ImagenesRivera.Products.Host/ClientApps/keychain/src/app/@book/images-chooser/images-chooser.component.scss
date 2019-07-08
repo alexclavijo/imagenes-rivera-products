@@ -1,12 +1,21 @@
+@import '../../../scss/mixin';
+
 .images-chooser {
-    min-height: 500px;
-    border: 2px dashed gray;
+    border: 2px dashed #ccc;
     position: relative;
-    
+    padding-bottom: 60px;
 
     .add-btn{
         position: absolute;
         bottom: 5px;
         right: 5px;
     }
+
+    .images-container{
+        height: 500px;
+        overflow: auto;
+        @include custom-scrollbar(10px, 10px);
+    }
+
+   
 }
