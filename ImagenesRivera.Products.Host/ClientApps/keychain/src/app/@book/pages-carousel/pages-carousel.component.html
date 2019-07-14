@@ -1,5 +1,5 @@
 <div class="pages-carousel"> 
-    <div *ngFor="let photo of photos; let i = index" class="photo-slide" (click)="slideSelected = i + 1">
+    <div *ngFor="let photo of photos; let i = index" class="photo-slide" (click)="selectSlideClick(i + 1)">
         <app-book-pagecropper [image]="photo" 
                               [layout]="layoutSelected"
                               [selected]="slideSelected === (i + 1)">
@@ -7,16 +7,21 @@
     </div>
 
     <ul [hidden]="!slideSelected" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
-        <li title="Apply Changes"><i class="material-icons">done</i></li>
-        <li title="Undo Changes"><i class="material-icons">undo</i></li>
-        <li title="Zoom In"><i class="material-icons">zoom_in</i></li>
-        <li title="Zoom Out"><i class="material-icons">zoom_out</i></li>
-        <li title="Rotate Left"><i class="material-icons">rotate_left</i></li>
-        <li title="Rotate Right"><i class="material-icons">rotate_right</i></li>
+        <li title="Apply Changes" (click)="doneClick()"><i class="material-icons">done</i></li>
+        <li title="Undo Changes" (click)="undoClick()"><i class="material-icons">undo</i></li>
+        
+        <li title="Zoom In" (click)="zoomInClick()"><i class="material-icons">zoom_in</i></li>
+        <li title="Zoom Out" (click)="zoomOutClick()"><i class="material-icons">zoom_out</i></li>
+        
+        <li title="Move Left" (click)="moveLeftClick()"><i class="material-icons">arrow_back</i></li>
+        <li title="Move Right" (click)="moveRightClick()"><i class="material-icons">arrow_forward</i></li>
+        <li title="Move Up" (click)="moveUpClick()"><i class="material-icons">arrow_upward</i></li>
+        <li title="Move Down" (click)="moveDownClick()"><i class="material-icons">arrow_downward</i></li>
+        
+        <li title="Rotate Left" (click)="rotateLeftClick()"><i class="material-icons">rotate_left</i></li>
+        <li title="Rotate Right" (click)="rotateRightClick()"><i class="material-icons">rotate_right</i></li>
     </ul>
 </div>
-
-
 
 <div [hidden]="!photos?.length" class="page-layouts-container">
     <app-book-pagelayouts (pageLayoutChangeEvent)="pageLayoutChangeHandled($event)"></app-book-pagelayouts>
