@@ -1,0 +1,14 @@
+<div class="page-layouts">
+    <div class="row ">
+        <div class="col-xs-6 page-layout" (click)="layoutChangedClick(2)" [ngClass]="{ selected:  layoutSelected === 2 }">
+            <div class="row">
+                <div class="col-xs-6 page">Photo</div>
+                <div class="col-xs-6 page">Photo</div>
+            </div>
+          </div>
+        <div class="col-xs-6 page-layout" (click)="layoutChangedClick(1)" [ngClass]="{ selected:  layoutSelected === 1 }" >
+          <div class="page">Photo</div>
+        </div>
+        
+    </div>
+</div>

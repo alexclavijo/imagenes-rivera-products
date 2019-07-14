@@ -1,38 +1,36 @@
-<div class="pages-carousel">
-    
-    <carousel>
-      <slide>
-         Front
-      </slide>
-      <slide>
-          <app-book-pagecropper></app-book-pagecropper>
-      </slide>
-      <slide>
-          <app-book-pagecropper></app-book-pagecropper>
-      </slide>
-      <slide>
-          Back
-       </slide>
-    </carousel>
-    
-    <div class="pages-carousel-options">
-
+<div class="pages-carousel"> 
+    <div *ngFor="let photo of photos; let i = index" class="photo-slide" (click)="slideSelected = i + 1">
+        <app-book-pagecropper [image]="photo" 
+                              [layout]="layoutSelected"
+                              [selected]="slideSelected === (i + 1)">
+        </app-book-pagecropper>
     </div>
+
+    <ul [hidden]="!slideSelected" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
+        <li title="Apply Changes"><i class="material-icons">done</i></li>
+        <li title="Undo Changes"><i class="material-icons">undo</i></li>
+        <li title="Zoom In"><i class="material-icons">zoom_in</i></li>
+        <li title="Zoom Out"><i class="material-icons">zoom_out</i></li>
+        <li title="Rotate Left"><i class="material-icons">rotate_left</i></li>
+        <li title="Rotate Right"><i class="material-icons">rotate_right</i></li>
+    </ul>
 </div>
 
-<div class="page-layouts">
-    <div class="row ">
-        <div class="col-xs-6 page-layout" (click)="layoutSelected = 1" [ngClass]="{selected:  layoutSelected === 1}" >
-          <div class="page">One</div>
-        </div>
-        <div class="col-xs-6 page-layout" (click)="layoutSelected = 2" [ngClass]="{selected:  layoutSelected === 2}">
-          <div class="row">
-              <div class="col-xs-6 page">One</div>
-              <div class="col-xs-6 page">Two</div>
-          </div>
-        </div>
-    </div>
+
+
+<div [hidden]="!photos?.length" class="page-layouts-container">
+    <app-book-pagelayouts (pageLayoutChangeEvent)="pageLayoutChangeHandled($event)"></app-book-pagelayouts>
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 

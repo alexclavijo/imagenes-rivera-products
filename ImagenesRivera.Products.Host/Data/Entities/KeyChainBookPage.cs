@@ -13,9 +13,8 @@ namespace ImagenesRivera.Products.Data.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public int Number { get; set; }
-        public string CustomText { get; set; }
-        public string ImageUrl { get; set; }
-
+        public string Photo1 { get; set; }
+        public string Photo2 { get; set; }
         public int KeyChainBookId { get; set; }
         public KeyChainBook KeyChainBook { get; set; }
     }

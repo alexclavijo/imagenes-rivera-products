@@ -6,8 +6,12 @@
    </button>
 
    <div class="images-container">
-      <div *ngFor="let img of images; let i = index" class="col-xs-4 col-md-3">
-            <app-book-imageitem [index]="i" [image]="img"></app-book-imageitem>
+      <div *ngFor="let file of imageFiles; let i = index" class="col-xs-4 col-md-3">
+            <app-book-imageitem [index]="i" 
+                                [imageFile]="file"
+                                (imageAddedToBookEvent)="imageAddedToBookEvent.emit($event)"
+                                (imageRemovedEvent)="imageRemovedFromListHandled($event)">
+            </app-book-imageitem>
       </div>
    </div>
    

@@ -1,53 +1,47 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import Cropper from 'cropperjs';
+import { pageCropperDefaults } from './page-cropper.defaults';
 
 @Component({
   selector: 'app-book-pagecropper',
   templateUrl: './page-cropper.component.html',
   styleUrls: ['./page-cropper.component.scss']
 })
-export class PageCropperComponent implements OnInit {
+export class PageCropperComponent implements OnInit, OnChanges {
 
   @Input()
   public image: File;
 
   @Input()
+  public layout: number;
+
+  @Input()
+  public selected: boolean;
+
+  @Input()
   public options: Cropper.Options;
 
   public cropper: Cropper;
+  public cropperOptions: Cropper.Options;
 
   constructor() { }
 
   ngOnInit() {
-    // this.options = {
-    //   dragMode: Cropper.DragMode.Move,
-    //   viewMode: Cropper.ViewMode.Free,
-    //   minContainerWidth: 750,
-    //   minContainerHeight: 750,
-    //   minCanvasHeight: 750,
-    //   minCanvasWidth: 750,
-    //   minCropBoxWidth: 750,
-    //   minCropBoxHeight: 750,
-    //   aspectRatio: 1,
-    //   autoCrop: false,
-    //   autoCropArea: 1,
-    //   movable: true,
-    //   zoomable: true,
-    //   zoomOnTouch: true,
-    //   zoomOnWheel: true,
-    //   scalable: true,
-    //   rotatable: true,
-    //   restore: true,
-    //   guides: false,
-    //   center: false,
-    //   highlight: false,
-    //   cropBoxMovable: false,
-    //   cropBoxResizable: false,
-    //   toggleDragModeOnDblclick: false,
-    //   responsive: true
-    // };
+    this.cropperOptions = JSON.parse(JSON.stringify(pageCropperDefaults));
+  }
+  
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.options) {
+       for (const prop in changes.options.currentValue) {
+            if (prop) {
+              this.cropperOptions[prop] = changes.options.currentValue[prop];
+            }
+       }
+    }
   }
 
+  
   onCropperInit(cropper: Cropper) {
     this.cropper = cropper;
   }
@@ -67,4 +61,6 @@ export class PageCropperComponent implements OnInit {
   onFail(error) {
     console.error(error);
   }
+
+  
 }

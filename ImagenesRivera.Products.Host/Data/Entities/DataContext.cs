@@ -81,7 +81,6 @@ namespace ImagenesRivera.Products.Data.Entities
             modelBuilder.Entity<Shipping>(entity => {
                 entity.OwnsOne(s => s.Address);
             });
-
         }
 
         private void SetupSoftDeletedEntities(ModelBuilder modelBuilder)

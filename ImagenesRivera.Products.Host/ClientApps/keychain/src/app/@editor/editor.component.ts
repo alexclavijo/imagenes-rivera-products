@@ -38,30 +38,30 @@ export class EditorComponent extends LoaderComponent implements OnInit, OnDestro
 
   public pixieLoadedEventHandler(loaded: boolean){
     if (loaded) {
-      this.initEditor();
+      //this.initEditor();
     }
   }
 
-  private initEditor(): void{
-    this.editor = new Pixie({
-      watermarkText: 'Imagenes Rivera',
-      image: this.state.page.imageBase64,
-      ui: {
-        openImageDialog: {
-          show: false
-        },
-        toolbar: {
-          hideOpenButton: true
-        }
-      },
-      onLoad: () => {
+  // private initEditor(): void{
+  //   this.editor = new Pixie({
+  //     watermarkText: 'Imagenes Rivera',
+  //     image: this.state.page.imageBase64,
+  //     ui: {
+  //       openImageDialog: {
+  //         show: false
+  //       },
+  //       toolbar: {
+  //         hideOpenButton: true
+  //       }
+  //     },
+  //     onLoad: () => {
 
-      },
-      onSave: (data, name) => {
-        this.state.page.imageBase64 = data;
-        this.router.navigate(['/my-book']);
-      }
-    } as IImageEditorSettings);
-  }
+  //     },
+  //     onSave: (data, name) => {
+  //       this.state.page.imageBase64 = data;
+  //       this.router.navigate(['/my-book']);
+  //     }
+  //   } as IImageEditorSettings);
+  // }
 
 }

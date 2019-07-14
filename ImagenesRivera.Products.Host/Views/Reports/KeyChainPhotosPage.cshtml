@@ -1,9 +1,62 @@
-﻿@{
+﻿@model ImagenesRivera.Products.Models.KeyChainBookVM
+@{
     Layout = null;
 }
 <!DOCTYPE html>
 <html>
 <body>
-   
+    <table width="100%" border="1">
+        <tbody>
+            <tr>
+                <td width="50%">
+                    <table width="100%">
+                        @{
+
+                            foreach (var page in Model.Pages.GetRange(0, 5))
+                            {
+                                if (page.IsFullPage)
+                                {
+                                    <tr>
+                                        <td width="100%"><img src="@{page.Photo1}" /></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td width="50%"><img src="@{page.Photo1}" /></td>
+                                        <td width="50%"><img src="@{page.Photo2}" /></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </td>
+
+                <td width="50%"> 
+                    <table width="100%">
+                        @{
+
+                            foreach (var page in Model.Pages.GetRange(5, 10))
+                            {
+                                if (page.IsFullPage)
+                                {
+                                    <tr>
+                                        <td width="100%"><img src="@{page.Photo1}" /></td>
+                                    </tr>
+                                }
+                                else
+                                {
+                                    <tr>
+                                        <td width="50%"><img src="@{page.Photo1}" /></td>
+                                        <td width="50%"><img src="@{page.Photo2}" /></td>
+                                    </tr>
+                                }
+                            }
+                        }
+                    </table>
+                </td>
+            </tr>
+         </tbody>
+    </table>
 </body>
 </html>

@@ -1,10 +1,19 @@
 <div class="container-fluid book-container">
     <div class="row">
         <div class="col-md-5">
-            <app-book-imageschooser></app-book-imageschooser>
+            <app-book-imageschooser 
+                (imageAddedToBookEvent)="imageAddedEventHandled($event)">
+            </app-book-imageschooser>
         </div>
         <div class="col-md-6">
-            <app-book-pagescarousel></app-book-pagescarousel>
+             <div *ngIf="!photos.length; else carousel" >
+                <img width="100%" height="400px" src="/keychain/assets/images/samples/sample3.jpg">
+            </div>
+            <ng-template #carousel>
+                <app-book-pagescarousel [photos]="photos"
+                                        (pageChangedEvent)="pageChangeHandled($event)">
+                </app-book-pagescarousel>
+            </ng-template>
         </div>
         <div class="col-md-1">
             <app-book-skinchooser></app-book-skinchooser>
@@ -12,6 +21,11 @@
     </div>
     <div class="create-order-section">
         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                <i class="material-icons">visibility</i>
+                Preview
+        </button>
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+                <i class="material-icons">shopping_cart</i>
                 Buy My Book
         </button>
     </div>

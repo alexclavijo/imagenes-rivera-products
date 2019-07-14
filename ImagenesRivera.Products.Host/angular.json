@@ -41,6 +41,7 @@
               "ClientApps/keychain/lib/jquery-1.12.4.min.js",
               "ClientApps/keychain/lib/modernizr.2.5.3.min.js",
               "node_modules/material-design-lite/material.min.js",
+              "node_modules/cropperjs/dist/cropper.js",
               "ClientApps/keychain/lib/bootstrap.min.js",
               "ClientApps/keychain/lib/jquery.flexslider.js",
               "ClientApps/keychain/lib/jquery.stellar.min.js",

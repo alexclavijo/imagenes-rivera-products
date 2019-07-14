@@ -1,0 +1,36 @@
+.page-photo-container {
+
+    &.selected{
+        ::ng-deep {
+            .cropper-container {
+                border: 3px solid gray;
+            }
+        }
+    }
+
+    ::ng-deep {
+        .cropper-container {
+            background: white;
+            border: 2px dashed #ccc;
+        }
+    }
+
+    &.full {
+        ::ng-deep {
+            .cropper-container {
+                width: 800px !important;
+                height: 400px !important;
+            }
+        }
+    }
+
+    &.single {
+        ::ng-deep {
+            .cropper-container {
+                width: 400px !important;
+                height: 400px !important;
+            }
+        }
+    }
+}
+

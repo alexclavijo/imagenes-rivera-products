@@ -1,29 +1,32 @@
 import Cropper from 'cropperjs';
 
 export const pageCropperDefaults: Cropper.Options = {
-      dragMode: Cropper.DragMode.Move,
-      viewMode: Cropper.ViewMode.Free,
-      minContainerWidth: 750,
-      minContainerHeight: 750,
-      minCanvasHeight: 750,
-      minCanvasWidth: 750,
-      minCropBoxWidth: 750,
-      minCropBoxHeight: 750,
-      aspectRatio: 1,
+      dragMode: 'move' as Cropper.DragMode.Move,
+      minContainerWidth: 800,
+      minCanvasWidth: 800,
+      minCropBoxWidth: 800,
+      minContainerHeight: 400,
+      minCanvasHeight: 400,
+      minCropBoxHeight: 400,
+      background: false, 
       autoCrop: false,
       autoCropArea: 1,
       movable: true,
       zoomable: true,
-      zoomOnTouch: true,
-      zoomOnWheel: true,
+      zoomOnTouch: false,
+      zoomOnWheel: false,
       scalable: true,
       rotatable: true,
       restore: true,
       guides: false,
-      center: false,
+      center: true,
       highlight: false,
       cropBoxMovable: false,
       cropBoxResizable: false,
       toggleDragModeOnDblclick: false,
-      responsive: true
+      responsive: true,
+      initialAspectRatio: 1
+
+
+
 };

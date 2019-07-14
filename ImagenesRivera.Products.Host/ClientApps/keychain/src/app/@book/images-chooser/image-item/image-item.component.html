@@ -4,13 +4,13 @@
             <i class="material-icons">more_vert</i>
         </button>
         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" attr.for="menu-lower-left-{{index}}">
-            <li class="mdl-menu__item">Add this Photo</li>
-            <li class="mdl-menu__item">Remove Photo</li>
+            <li class="mdl-menu__item" (click)="addToBookClick()">Add this Photo</li>
+            <li class="mdl-menu__item" (click)="removeFromListClick()">Remove Photo</li>
         </ul>
     </div>
     <div class="item-body">
         <div class="img-container">
-                <img [src]="image" width="100%"> 
+            <img [src]="image64" width="100%"> 
         </div>
     </div>
 </div>
