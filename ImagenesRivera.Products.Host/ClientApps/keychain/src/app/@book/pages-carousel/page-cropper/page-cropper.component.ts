@@ -40,7 +40,6 @@ export class PageCropperComponent implements OnInit, OnChanges {
        }
     }
   }
-
   
   onCropperInit(cropper: Cropper) {
     this.cropper = cropper;

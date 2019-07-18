@@ -1,34 +1,36 @@
-import { IPage } from './../models/page';
 import { IBook } from './../models/book';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,AfterViewInit, ViewChild} from '@angular/core';
+import { PagesCarouselComponent } from './pages-carousel/pages-carousel.component';
 
 @Component({
   selector: 'app-book',
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.scss']
 })
-export class BookComponent implements OnInit {
-  
+export class BookComponent implements OnInit, AfterViewInit {
+
+  @ViewChild(PagesCarouselComponent, { static: false }) 
+  private carousel: PagesCarouselComponent;
+
   public book: IBook;
-  public photos: File[];
+  public pagesNumber: number; 
 
-  constructor() { 
+  constructor() {}
+
+  ngOnInit() {    
   }
 
-  ngOnInit() {
-    this.photos = [];
-    this.book = { title: 'New Book', skin: 'Default', pages: [] };
-    for (let index = 1; index <= 10; index++) {
-      this.book.pages.push({
-        index,
-        photo1: null,
-        photo2: null
-      });
-    }
-  }
+  ngAfterViewInit(): void {
+    
+  } 
 
   imageAddedEventHandled(image: File) {
-    this.photos.push(image);
+    if(!this.pagesNumber) {
+      this.pagesNumber = 10;
+      this.carousel.initSlides(this.pagesNumber, image);
+    } else {
+      this.carousel.addImageToCurrentSlide(image);
+    }
   }  
 
   pageChangeHandled(index: number) {

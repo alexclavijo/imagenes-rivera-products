@@ -1,8 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChildren, QueryList, OnChanges, SimpleChanges } from '@angular/core';
 import { PageCropperComponent } from './page-cropper/page-cropper.component';
 import Cropper from 'cropperjs';
 
+
 interface ISlideModel {
+  index: number;
   photo: File;
   layout: number;
 }
@@ -18,34 +20,42 @@ export class PagesCarouselComponent implements OnInit {
   @ViewChildren(PageCropperComponent)
   pageCroppers: QueryList<PageCropperComponent>;
 
-  @Input()
-  public photos: File[];
-
   @Output()
   public pageChangedEvent = new EventEmitter();
 
   public slides: ISlideModel[];
-  public slideSelected: number;
+  public slideSelected: ISlideModel;
   public cropperSelected: Cropper;
   public layoutSelected: number;
 
   constructor() { }
 
   ngOnInit() {
-   this.layoutSelected = 2;
+    this.layoutSelected = 2;    
+  }
+
+  public initSlides(pagesNumber: number, image: File): void {
+    this.slides = [];
+    for (let index = 1; index <= pagesNumber; index++) {
+      this.slides.push({ index, photo: null, layout: this.layoutSelected });
+    }
+    this.slides[0].photo = image;
+    setTimeout(() => {
+      this.selectSlide(this.slides[0]);
+    }, 1000);
+  }
+
+  public addImageToCurrentSlide(image: File) {
+    // this.slideSelected.photo = image;
   }
 
   public get slideSelectedEven(): boolean {
-    return this.slideSelected && this.slideSelected % 2 === 0;
-  }
-  
-  selectSlideClick(slide: number) {
-    this.slideSelected = slide;
-    this.cropperSelected = this.pageCroppers.find((item, index) => index === (slide - 1)).cropper;
+    return this.slideSelected && this.slideSelected.index % 2 === 0;
   }
 
-  activeSlideChangeHandled(index: number) {
-    
+  selectSlide(slide: ISlideModel) {
+    this.slideSelected = slide;
+    this.cropperSelected = this.pageCroppers.find((item, index) => index === (slide.index - 1)).cropper;
   }
 
   slideRangeChangeHandled(index: number) {
@@ -54,6 +64,7 @@ export class PagesCarouselComponent implements OnInit {
 
   pageLayoutChangeHandled(layout: number) {
     this.layoutSelected = layout;
+    this.slideSelected.layout = layout;
   }
   
   doneClick() {
@@ -94,5 +105,9 @@ export class PagesCarouselComponent implements OnInit {
 
   rotateRightClick() {
     this.cropperSelected.rotate(45);
+  }
+
+  removeClick() {
+    this.slideSelected.photo = null;
   }
 }

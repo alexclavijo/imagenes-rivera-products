@@ -1,9 +1,12 @@
 <div class="pages-carousel"> 
-    <div *ngFor="let photo of photos; let i = index" class="photo-slide" (click)="selectSlideClick(i + 1)">
-        <app-book-pagecropper [image]="photo" 
-                              [layout]="layoutSelected"
-                              [selected]="slideSelected === (i + 1)">
-        </app-book-pagecropper>
+    <div *ngFor="let slide of slides; let i = index" class="photo-slide" (click)="selectSlide(slide)">
+        <div *ngIf="!slide.photo; else photoCropper" class="blank-page"></div>        
+        <ng-template #photoCropper>
+                <app-book-pagecropper [image]="slide?.photo" 
+                                      [layout]="layoutSelected"
+                                      [selected]="slideSelected?.index === (i + 1)">
+                </app-book-pagecropper>
+        </ng-template>
     </div>
 
     <ul [hidden]="!slideSelected" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
@@ -20,6 +23,8 @@
         
         <li title="Rotate Left" (click)="rotateLeftClick()"><i class="material-icons">rotate_left</i></li>
         <li title="Rotate Right" (click)="rotateRightClick()"><i class="material-icons">rotate_right</i></li>
+
+        <li title="Remove Photo" (click)="removeClick()"><i class="material-icons">delete</i></li>
     </ul>
 </div>
 
