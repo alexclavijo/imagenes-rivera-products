@@ -1,14 +1,27 @@
 .pages-carousel{
     height: 450px;
     position: relative;
-    background: white;
+    //background: white;
     float: left;
-   
+
     .photo-slide { 
         float: left;
 
-        .blank-page{
+        &.selected {
+            .blank-page {
+                border: 2px solid #ccc !important;
+            }
+        }
+
+        .blank-page {
+            width: 400px;
+            height: 400px;
             background: white;
+            border: 2px dashed #ccc;
+
+            &.full { 
+                width: 800px;
+            }
         }
     }
 

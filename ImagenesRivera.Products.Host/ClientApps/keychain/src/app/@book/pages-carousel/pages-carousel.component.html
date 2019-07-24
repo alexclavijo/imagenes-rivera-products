@@ -1,6 +1,13 @@
 <div class="pages-carousel"> 
-    <div *ngFor="let slide of slides; let i = index" class="photo-slide" (click)="selectSlide(slide)">
-        <div *ngIf="!slide.photo; else photoCropper" class="blank-page"></div>        
+    <div *ngFor="let slide of slides; let i = index" class="photo-slide" 
+        [ngClass]="{'selected': slideSelected?.index === (i + 1)}"
+        [hidden] = "!slide.visible"  
+        (click)="selectSlide(slide)">
+
+        <div *ngIf="!slide.photo; else photoCropper" class="blank-page" 
+             [ngClass]="{'full': layoutSelected === 1 }">
+        </div>        
+       
         <ng-template #photoCropper>
                 <app-book-pagecropper [image]="slide?.photo" 
                                       [layout]="layoutSelected"
@@ -9,7 +16,7 @@
         </ng-template>
     </div>
 
-    <ul [hidden]="!slideSelected" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
+    <ul [hidden]="!slideSelected || !slideSelected.photo" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
         <li title="Apply Changes" (click)="doneClick()"><i class="material-icons">done</i></li>
         <li title="Undo Changes" (click)="undoClick()"><i class="material-icons">undo</i></li>
         
@@ -28,7 +35,7 @@
     </ul>
 </div>
 
-<div [hidden]="!photos?.length" class="page-layouts-container">
+<div [hidden]="!slides?.length" class="page-layouts-container">
     <app-book-pagelayouts (pageLayoutChangeEvent)="pageLayoutChangeHandled($event)"></app-book-pagelayouts>
 </div>
 
