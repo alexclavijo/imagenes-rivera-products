@@ -10,13 +10,18 @@
        
         <ng-template #photoCropper>
                 <app-book-pagecropper [image]="slide?.photo" 
+                                      [slideIndex]="slide?.index"
                                       [layout]="layoutSelected"
                                       [selected]="slideSelected?.index === (i + 1)">
                 </app-book-pagecropper>
         </ng-template>
     </div>
 
-    <ul [hidden]="!slideSelected || !slideSelected.photo" class="image-options-container" [ngClass]="{ 'left10': layoutSelected === 2 && !slideSelectedEven, 'left410': layoutSelected === 2 && slideSelectedEven  }" >
+    <ul [hidden]="!slideSelected || !slideSelected.photo" class="image-options-container" 
+        [ngClass]="{ 'left10': layoutSelected === 2 && slideSelected?.index % 2 !== 0, 
+                     'left410': layoutSelected === 2 && slideSelected?.index % 2 === 0,
+                     'left220': layoutSelected === 1 
+                   }" >
         <li title="Apply Changes" (click)="doneClick()"><i class="material-icons">done</i></li>
         <li title="Undo Changes" (click)="undoClick()"><i class="material-icons">undo</i></li>
         
@@ -33,6 +38,15 @@
 
         <li title="Remove Photo" (click)="removeClick()"><i class="material-icons">delete</i></li>
     </ul>
+</div>
+
+<div class="slides-nav-buttons">
+    <button (click)="prevSlideClick()" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+        <i class="material-icons">navigate_before</i>
+    </button>
+    <button (click)="nextSlideClick()" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+        <i class="material-icons">navigate_next</i>
+    </button>
 </div>
 
 <div [hidden]="!slides?.length" class="page-layouts-container">

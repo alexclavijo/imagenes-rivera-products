@@ -47,19 +47,17 @@ export class PagesCarouselComponent implements OnInit {
   }
 
   public addImageToCurrentSlide(image: File) {
-    // this.slideSelected.photo = image;
+      this.slideSelected.photo = image;
   } 
 
   selectSlide(slide: ISlideModel) {
-    if(slide.photo) {
-      this.slides.forEach(s => s.visible = false);
-      this.slideSelected = slide;
-      this.slideSelected.visible = true;
-      const position = slide.index - 1;
-      this.cropperSelected = this.pageCroppers.find((item, index) => index === position).cropper;
-      
-      // Two Slides Layout
-      if(this.layoutSelected === 2) {
+    this.slides.forEach(s => s.visible = false);
+    this.slideSelected = slide;
+    this.slideSelected.visible = true;
+    this.slideSelected.layout = this.layoutSelected;
+    const position = this.slideSelected.index - 1;
+    // Two Slides Layout
+    if(this.layoutSelected === 2) {
         if(this.slideSelected.index % 2 !== 0) { 
           // Odd on Left
           this.slides[position + 1].visible = true;
@@ -68,6 +66,10 @@ export class PagesCarouselComponent implements OnInit {
           this.slides[position - 1].visible = true;
         }
       }
+
+    if(this.slideSelected.photo) {
+      const cropperComponent = this.pageCroppers.find((item, index) => item.slideIndex === this.slideSelected.index);
+      this.cropperSelected = cropperComponent.cropper;
     }
   }
 
@@ -124,6 +126,20 @@ export class PagesCarouselComponent implements OnInit {
   removeClick() {
     if(confirm('Are you sure?')) {
       this.slideSelected.photo = null;
+    }
+  }
+
+  prevSlideClick() {
+    const position = this.slideSelected.index - 1;
+    if(position >= this.layoutSelected) {
+      this.selectSlide(this.slides[position - this.layoutSelected]);
+    }
+  }
+
+  nextSlideClick() {    
+    const position = this.slideSelected.index - 1;
+    if(position < this.slides.length - this.layoutSelected) {
+      this.selectSlide(this.slides[position + this.layoutSelected]);
     }
   }
 }

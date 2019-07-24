@@ -35,6 +35,10 @@
             left: 10px;
         }
     
+        &.left220{
+            left: 220px;
+        }
+
         &.left410{
             left: 410px;
         }
@@ -47,7 +51,16 @@
     }
 }
 
+.slides-nav-buttons {
+   clear: left;
+   width: 800px;
+   height: 60px;
+   text-align: center;
 
+   button {
+       margin: 10px;
+   }
+}
 
 .page-layouts-container{
     clear: left;

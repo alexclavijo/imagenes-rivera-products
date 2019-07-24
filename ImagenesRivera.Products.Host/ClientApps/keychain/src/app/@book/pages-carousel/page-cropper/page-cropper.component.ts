@@ -19,6 +19,9 @@ export class PageCropperComponent implements OnInit, OnChanges {
   public selected: boolean;
 
   @Input()
+  public slideIndex: number;
+
+  @Input()
   public options: Cropper.Options;
 
   public cropper: Cropper;
