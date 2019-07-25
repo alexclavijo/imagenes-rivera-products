@@ -1,9 +1,10 @@
 .page-photo-container {
+    width: 100%;
 
     &.selected{
         ::ng-deep {
             .cropper-container {
-                border: 3px solid gray;
+                border: 3px solid #ff4081;
             }
         }
     }
@@ -18,7 +19,7 @@
     &.full {
         ::ng-deep {
             .cropper-container {
-                width: 800px !important;
+                width: 100% !important;
                 height: 400px !important;
             }
         }
@@ -27,7 +28,7 @@
     &.single {
         ::ng-deep {
             .cropper-container {
-                width: 400px !important;
+                width: 100% !important;
                 height: 400px !important;
             }
         }

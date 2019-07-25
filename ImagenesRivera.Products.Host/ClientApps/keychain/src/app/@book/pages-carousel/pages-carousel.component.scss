@@ -1,38 +1,47 @@
 .pages-carousel{
+    width: 100%;
     height: 450px;
     position: relative;
     //background: white;
     float: left;
 
+    .full { 
+        width: 100% !important;
+    }
+
     .photo-slide { 
+        width: 50%;
         float: left;
 
         &.selected {
             .blank-page {
-                border: 2px solid #ccc !important;
+                border: 3px solid #ff4081 !important;
             }
         }
 
         .blank-page {
-            width: 400px;
             height: 400px;
             background: white;
             border: 2px dashed #ccc;
+            cursor: move;
+        }
 
-            &.full { 
-                width: 800px;
-            }
+        .page-number {
+            width: 100%;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
         }
     }
 
     .image-options-container {
         position: absolute;
-        top: calc(440px - 32px);
+        top: calc(440px - 16px);
         height: 32px;
         width: 400px;
 
-        &.left10{
-            left: 10px;
+        &.left0{
+            left: 0px;
         }
     
         &.left220{
@@ -44,7 +53,7 @@
         }
 
         li {
-            padding: 5px;
+            padding: 3px;
             float: left;
             cursor: pointer;
         }
@@ -53,12 +62,18 @@
 
 .slides-nav-buttons {
    clear: left;
-   width: 800px;
+   width: 100%;
    height: 60px;
+   padding-top: 10px;
    text-align: center;
 
    button {
        margin: 10px;
+
+       &.disabled{
+           pointer-events: none;
+           opacity: .5;
+       }
    }
 }
 

@@ -1,12 +1,10 @@
 <div class="pages-carousel"> 
     <div *ngFor="let slide of slides; let i = index" class="photo-slide" 
-        [ngClass]="{'selected': slideSelected?.index === (i + 1)}"
+        [ngClass]="{'selected': slideSelected?.index === (i + 1), 'full': layoutSelected === 1}"
         [hidden] = "!slide.visible"  
         (click)="selectSlide(slide)">
 
-        <div *ngIf="!slide.photo; else photoCropper" class="blank-page" 
-             [ngClass]="{'full': layoutSelected === 1 }">
-        </div>        
+        <div *ngIf="!slide.photo; else photoCropper" class="blank-page"></div>
        
         <ng-template #photoCropper>
                 <app-book-pagecropper [image]="slide?.photo" 
@@ -15,10 +13,14 @@
                                       [selected]="slideSelected?.index === (i + 1)">
                 </app-book-pagecropper>
         </ng-template>
+        
+        <div class="page-number">
+            <span>Page {{slide.index}}</span>
+        </div>
     </div>
 
     <ul [hidden]="!slideSelected || !slideSelected.photo" class="image-options-container" 
-        [ngClass]="{ 'left10': layoutSelected === 2 && slideSelected?.index % 2 !== 0, 
+        [ngClass]="{ 'left0': layoutSelected === 2 && slideSelected?.index % 2 !== 0, 
                      'left410': layoutSelected === 2 && slideSelected?.index % 2 === 0,
                      'left220': layoutSelected === 1 
                    }" >
@@ -41,10 +43,10 @@
 </div>
 
 <div class="slides-nav-buttons">
-    <button (click)="prevSlideClick()" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+    <button (click)="prevSlideClick()" [ngClass]="{ 'disabled': prevBtnDisabled}" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
         <i class="material-icons">navigate_before</i>
     </button>
-    <button (click)="nextSlideClick()" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
+    <button (click)="nextSlideClick()" [ngClass]="{ 'disabled': nextBtnDisabled}" class="add-btn mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-js-ripple-effect">
         <i class="material-icons">navigate_next</i>
     </button>
 </div>

@@ -28,11 +28,21 @@ export class PagesCarouselComponent implements OnInit {
   public slideSelected: ISlideModel;
   public cropperSelected: Cropper;
   public layoutSelected: number;
+  public navIndex: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.layoutSelected = 2;    
+    this.layoutSelected = 2; 
+    this.navIndex = 1;
+  }
+
+  public get nextBtnDisabled(): boolean {
+     return this.slides && (this.navIndex + this.layoutSelected) >= this.slides.length;
+  }
+
+  public get prevBtnDisabled(): boolean {
+    return this.slides && (this.navIndex - this.layoutSelected) <= 0;
   }
 
   public initSlides(pagesNumber: number, image: File): void {
@@ -130,13 +140,15 @@ export class PagesCarouselComponent implements OnInit {
   }
 
   prevSlideClick() {
+    this.navIndex= this.navIndex - this.layoutSelected;  
     const position = this.slideSelected.index - 1;
     if(position >= this.layoutSelected) {
       this.selectSlide(this.slides[position - this.layoutSelected]);
     }
   }
 
-  nextSlideClick() {    
+  nextSlideClick() {  
+    this.navIndex= this.navIndex + this.layoutSelected;  
     const position = this.slideSelected.index - 1;
     if(position < this.slides.length - this.layoutSelected) {
       this.selectSlide(this.slides[position + this.layoutSelected]);
