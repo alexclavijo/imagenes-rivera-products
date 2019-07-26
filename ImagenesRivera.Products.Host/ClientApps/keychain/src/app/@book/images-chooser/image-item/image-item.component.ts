@@ -6,7 +6,7 @@ import { AppStateService } from '../../../shared/appstate.service';
   templateUrl: './image-item.component.html',
   styleUrls: ['./image-item.component.scss']
 })
-export class ImageItemComponent implements AfterViewInit, OnChanges {
+export class ImageItemComponent implements  OnChanges {
   
   @Input()
   public index: number;
@@ -23,18 +23,17 @@ export class ImageItemComponent implements AfterViewInit, OnChanges {
   public image64: string;
 
   constructor(private state: AppStateService) { }
-
-  ngAfterViewInit(): void {
-    this.state.updateMDL();
-  }
+  
 
   ngOnChanges(changes: SimpleChanges) {
     if(changes.imageFile && changes.imageFile.currentValue) {
       const reader = new FileReader();
       reader.onload = (event: any) => {
         this.image64 = event.target.result; 
+        this.state.updateMDL();
       };
       reader.readAsDataURL(changes.imageFile.currentValue);
+      
     }
   }  
 
