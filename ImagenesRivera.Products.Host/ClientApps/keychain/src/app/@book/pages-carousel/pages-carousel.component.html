@@ -7,7 +7,7 @@
         <div *ngIf="!slide.photo; else photoCropper" class="blank-page"></div>
        
         <ng-template #photoCropper>
-                <app-book-pagecropper [image]="slide?.photo" 
+                <app-book-pagecropper [imageFile]="slide?.photo" 
                                       [slideIndex]="slide?.index"
                                       [layout]="layoutSelected"
                                       [selected]="slideSelected?.index === (i + 1)">
@@ -24,7 +24,7 @@
                      'left410': layoutSelected === 2 && slideSelected?.index % 2 === 0,
                      'left220': layoutSelected === 1 
                    }" >
-        <li title="Apply Changes" (click)="doneClick()"><i class="material-icons">done</i></li>
+        <!-- <li title="Apply Changes" (click)="doneClick()"><i class="material-icons">done</i></li> -->
         <li title="Undo Changes" (click)="undoClick()"><i class="material-icons">undo</i></li>
         
         <li title="Zoom In" (click)="zoomInClick()"><i class="material-icons">zoom_in</i></li>

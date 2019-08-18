@@ -1,0 +1,18 @@
+<dialog class="mdl-dialog">
+  <div class="mdl-dialog__content">
+      <form action="#">
+          <ul>
+            <li>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input [(ngModel)]="bookTitle" class="mdl-textfield__input" type="text" name="booktitle">
+                <label class="mdl-textfield__label" for="fullname">Book Title</label>
+              </div>
+            </li>
+          </ul>
+      </form>
+  </div>
+  <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+    <button (click)="createClick()" type="button" class="mdl-button">Create</button>
+    <!-- <button (click)="close()" type="button" class="mdl-button close">Close</button> -->
+  </div>
+</dialog>

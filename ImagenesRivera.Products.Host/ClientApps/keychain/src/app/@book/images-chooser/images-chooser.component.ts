@@ -23,16 +23,6 @@ export class ImagesChooserComponent implements OnInit {
         for (const file of event.target.files) {
           this.imageFiles.push(file);
         }
-        
-        // const filesAmount = event.target.files.length;
-        // for (let i = 0; i < filesAmount; i++) {
-        //   const reader = new FileReader();
-        //   reader.onload = (event: any) => {
-        //       this.images64.push(event.target.result); 
-            
-        //   };
-        //   reader.readAsDataURL(event.target.files[i]);
-        // }
     }
   }
 

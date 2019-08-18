@@ -8,14 +8,15 @@ declare let componentHandler: any;
 export class AppStateService {
 
   public user: BehaviorSubject<IUser> = new BehaviorSubject<IUser>(null);
-
   public page: IPage;
-
   public book: IBook;
+  public appBusy = new BehaviorSubject<boolean>(false);
 
   // Metrial Design Lite
   public updateMDL(): void {
-    componentHandler.upgradeDom();
+    if(componentHandler) {
+      componentHandler.upgradeDom();
+    }
   }
 
 }

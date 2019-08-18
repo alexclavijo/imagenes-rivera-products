@@ -6,6 +6,7 @@ using System.Collections.Generic;
 namespace ImagenesRivera.Products.Api.Controllers
 {
     [Route("api/orders")]
+    [Produces("application/json")]
     [ApiController]
     public class OrdersController : ControllerBase
     {

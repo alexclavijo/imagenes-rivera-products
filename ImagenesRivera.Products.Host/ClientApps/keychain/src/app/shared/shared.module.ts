@@ -1,23 +1,29 @@
+import { FormsModule } from '@angular/forms';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { JsCssLoaderComponent } from './js-css-loader/js-css-loader.component';
 import { AppStateService } from './appstate.service';
+import { LoaderComponent } from './loading/loader.component';
 
 @NgModule({
   declarations: [
-    JsCssLoaderComponent
+    JsCssLoaderComponent, 
+    LoaderComponent
   ],
 
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
 
   exports: [
     CommonModule,
     HttpClientModule,
-    JsCssLoaderComponent
+    FormsModule,
+    JsCssLoaderComponent,
+    LoaderComponent
   ]
 })
 export class SharedModule {

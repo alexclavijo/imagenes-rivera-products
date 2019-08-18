@@ -1,7 +1,13 @@
 import { IPage } from './page';
 
+export interface IBookSave {
+   title: string;
+   pagesNumber: number;
+}
+
 export interface IBook {
    title: string;
-   skin: string;
-   pages: IPage[];
+   folderName: string;
+   skin?: string;
+   pages?: IPage[];
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  pixieScriptUrl: '/assets/pixie.min.js'
+  pixieScriptUrl: '/assets/pixie.min.js',
+  bookPagesNumber: 2
 };
 
 /*

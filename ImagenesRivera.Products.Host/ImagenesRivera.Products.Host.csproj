@@ -22,7 +22,8 @@
 
   <ItemGroup>
     <Folder Include="ClientApps\admin\" />
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\keychain\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
 </Project>

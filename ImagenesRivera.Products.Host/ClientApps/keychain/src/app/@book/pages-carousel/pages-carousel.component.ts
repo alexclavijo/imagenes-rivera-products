@@ -1,13 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChildren, QueryList, OnChanges, SimpleChanges } from '@angular/core';
 import { PageCropperComponent } from './page-cropper/page-cropper.component';
 import Cropper from 'cropperjs';
+import { Observable } from 'rxjs';
 
-
-interface ISlideModel {
+export interface ISlideModel {
   index: number;
   photo: File;
   layout: number;
   visible: boolean;
+}
+
+export interface ICroppedCanvas {
+  index: number;
+  blob: Blob;
 }
 
 @Component({
@@ -37,6 +42,23 @@ export class PagesCarouselComponent implements OnInit {
     this.navIndex = 1;
   }
 
+  public cropPageCanvas(): Observable<ICroppedCanvas> {
+    return new Observable(observer => {
+      this.slides.forEach((slide: ISlideModel) => {
+        const component = this.pageCroppers.find((item) => item.slideIndex === slide.index);
+        if (component && component.cropper) {
+            const cropper = component.cropper;   
+            cropper.getCroppedCanvas({ fillColor: 'white', width: 400.0, height: 400.0 }).toBlob((blob: Blob) => {
+              observer.next({ index: slide.index, blob });
+              if (slide.index === this.slides.length) {
+                observer.complete();
+              }
+            }, 'image/jpeg', '0.95');
+        }
+      });
+    });
+  }
+
   public get nextBtnDisabled(): boolean {
      return this.slides && (this.navIndex + this.layoutSelected) >= this.slides.length;
   }
@@ -51,15 +73,14 @@ export class PagesCarouselComponent implements OnInit {
       this.slides.push({ index, photo: null, layout: this.layoutSelected, visible: false });
     }
     this.slides[0].photo = image;
-    setTimeout(() => {
-      this.selectSlide(this.slides[0]);
-    }, 200);
+    this.selectSlide(this.slides[0]);   
   }
 
   public addImageToCurrentSlide(image: File) {
-      this.slideSelected.photo = image;
+    this.slideSelected.photo = image;
   } 
 
+ 
   selectSlide(slide: ISlideModel) {
     this.slides.forEach(s => s.visible = false);
     this.slideSelected = slide;
@@ -68,17 +89,17 @@ export class PagesCarouselComponent implements OnInit {
     const position = this.slideSelected.index - 1;
     // Two Slides Layout
     if(this.layoutSelected === 2) {
-        if(this.slideSelected.index % 2 !== 0) { 
-          // Odd on Left
-          this.slides[position + 1].visible = true;
-        } else { 
-          // Even on Right
-          this.slides[position - 1].visible = true;
-        }
+      if(this.slideSelected.index % 2 !== 0) { 
+        // Odd on Left
+        this.slides[position + 1].visible = true;
+      } else { 
+        // Even on Right
+        this.slides[position - 1].visible = true;
       }
+    }
 
     if(this.slideSelected.photo) {
-      const cropperComponent = this.pageCroppers.find((item, index) => item.slideIndex === this.slideSelected.index);
+      const cropperComponent = this.pageCroppers.find((item) => item.slideIndex === this.slideSelected.index);
       this.cropperSelected = cropperComponent.cropper;
     }
   }
@@ -92,13 +113,9 @@ export class PagesCarouselComponent implements OnInit {
   slideRangeChangeHandled(index: number) {
     this.pageChangedEvent.emit(index);
   }
-  
-  doneClick() {
-    // this.cropperSelected.getCroppedCanvas();
-  }
 
   undoClick() {
-    this.cropperSelected.reset();
+   this.cropperSelected.reset();
   }
 
   zoomInClick() {

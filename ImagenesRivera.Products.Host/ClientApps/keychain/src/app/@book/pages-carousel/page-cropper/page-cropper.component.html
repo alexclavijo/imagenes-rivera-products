@@ -1,5 +1,5 @@
 <div class="page-photo-container" [ngClass]="{ 'full': layout === 1, 'single': layout === 2, 'selected': selected }" >
-    <lib-cropper [imageFile]="image" 
+    <lib-cropper [imageFile]="imageFile" 
                  [options]="cropperOptions"
                  (init)="onCropperInit($event)"
                  (crop)="onCrop($event)"

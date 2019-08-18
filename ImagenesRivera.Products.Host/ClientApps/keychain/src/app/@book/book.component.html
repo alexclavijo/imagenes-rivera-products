@@ -22,9 +22,10 @@
                 <i class="material-icons">visibility</i>
                 Preview
         </button>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+        <button (click)="buyAlbumClick()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                 <i class="material-icons">shopping_cart</i>
                 Buy My Book
         </button>
     </div>
 </div>
+<app-book-createpopup (bookCreatedEvent)="bookCreatedEventHandler($event)"></app-book-createpopup>

@@ -9,6 +9,8 @@ import { PagesCarouselComponent } from './pages-carousel/pages-carousel.componen
 import { PageCropperComponent } from './pages-carousel/page-cropper/page-cropper.component';
 import { ImageItemComponent } from './images-chooser/image-item/image-item.component';
 import { PageLayoutsComponent } from './pages-carousel/page-layouts/page-layouts.component';
+import { BookService } from './book.service';
+import { CreatePopupComponent } from './create-popup/create-popup.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { PageLayoutsComponent } from './pages-carousel/page-layouts/page-layouts
     PagesCarouselComponent, 
     PageCropperComponent, 
     ImageItemComponent, 
-    PageLayoutsComponent
+    PageLayoutsComponent, 
+    CreatePopupComponent
   ],
   exports: [BookComponent],
   imports: [
@@ -26,6 +29,7 @@ import { PageLayoutsComponent } from './pages-carousel/page-layouts/page-layouts
     RouterModule,
     NgxCropperJsModule
   ],
+  providers: [BookService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class BookModule { }
