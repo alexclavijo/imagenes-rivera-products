@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 
 namespace ImagenesRivera.Products.Api.Controllers
@@ -45,10 +47,12 @@ namespace ImagenesRivera.Products.Api.Controllers
         public ActionResult<(int index, string photoPath)> Put(string bookFolderName, [FromForm] BookPageImageSave pageSave)
         {
             var filePath = $"{UploadFolderPath}/{bookFolderName}/{pageSave.File.FileName}";
-            using (var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+            using (Bitmap bitmap = new Bitmap(pageSave.File.OpenReadStream()))
             {
-                pageSave.File.OpenReadStream().CopyTo(fileStream);
+                bitmap.SetResolution(300, 300);
+                bitmap.Save(filePath, ImageFormat.Jpeg);
             }
+           
             return Ok(new { index = pageSave.Index, photoPath = filePath });
         }
     }

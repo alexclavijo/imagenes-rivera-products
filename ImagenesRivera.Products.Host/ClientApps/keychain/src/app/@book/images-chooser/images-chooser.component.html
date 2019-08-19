@@ -6,7 +6,7 @@
    </button>
 
    <div class="images-container">
-      <div *ngFor="let file of imageFiles; let i = index" class="col-xs-4 col-md-3">
+      <div *ngFor="let file of imageFiles; let i = index" class="col-xs-6 col-md-4">
             <app-book-imageitem [index]="i" 
                                 [imageFile]="file"
                                 (imageAddedToBookEvent)="imageAddedToBookEvent.emit($event)"

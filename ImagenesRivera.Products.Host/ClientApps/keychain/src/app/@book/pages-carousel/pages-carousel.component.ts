@@ -47,13 +47,15 @@ export class PagesCarouselComponent implements OnInit {
       this.slides.forEach((slide: ISlideModel) => {
         const component = this.pageCroppers.find((item) => item.slideIndex === slide.index);
         if (component && component.cropper) {
-            const cropper = component.cropper;   
-            cropper.getCroppedCanvas({ fillColor: 'white', width: 400.0, height: 400.0 }).toBlob((blob: Blob) => {
+            const cropper = component.cropper as Cropper;
+            const canvas = cropper.getCroppedCanvas({ fillColor: 'white', width: 591, height: 591 });
+            
+            canvas.toBlob((blob: Blob) => {
               observer.next({ index: slide.index, blob });
               if (slide.index === this.slides.length) {
                 observer.complete();
               }
-            }, 'image/jpeg', '0.95');
+            }, 'image/jpeg', '1');
         }
       });
     });

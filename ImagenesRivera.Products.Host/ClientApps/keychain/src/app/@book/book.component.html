@@ -1,11 +1,11 @@
 <div class="container-fluid book-container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-4">
             <app-book-imageschooser 
                 (imageAddedToBookEvent)="imageAddedEventHandled($event)">
             </app-book-imageschooser>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <img *ngIf="!pagesNumber"  width="100%" height="400px" src="/keychain/assets/images/samples/sample3.jpg">
             <app-book-pagescarousel
                 [hidden]="!pagesNumber"

@@ -23,7 +23,7 @@ export class PageCropperComponent implements OnInit {
   @Input()
   public options: Cropper.Options;
 
-  public cropper: Cropper;
+  public cropper: any;
   public cropperOptions: Cropper.Options;
 
   constructor() { }
@@ -32,15 +32,15 @@ export class PageCropperComponent implements OnInit {
     this.cropperOptions =  {
       dragMode: 'move' as Cropper.DragMode.Move,
       viewMode: 0 as Cropper.ViewMode.Free,
-      minContainerWidth: 420,
-      minContainerHeight: 400,
-      minCanvasWidth: 420,
-      minCanvasHeight: 400,
-      minCropBoxWidth: 380,
-      minCropBoxHeight: 380,
-      background: true, 
+      background: false, 
       autoCrop: true,
       aspectRatio: 1/1,
+      minContainerHeight: 380,
+      minContainerWidth: 380,
+      minCanvasHeight: 380,
+      minCanvasWidth: 380,
+      minCropBoxHeight: 350,
+      minCropBoxWidth: 350,
       movable: true,
       zoomable: true,
       zoomOnTouch: false,
@@ -56,21 +56,23 @@ export class PageCropperComponent implements OnInit {
       toggleDragModeOnDblclick: false,
       responsive: true,
       ready: () => {
-        this.cropper.setCropBoxData({ width: 380.0, height: 380.0, top: 10, left: 10 });
         
+        this.cropper.setCanvasData({ 
+          width: 591, 
+          height: 591,
+          top: 0,
+          left: 0
+        });
+
+        this.cropper.setCropBoxData({ 
+          width: 355,
+          height: 355,
+          top: 10,
+          left: 10
+        });
       }
     };
   }
-
-  // ngOnChanges(changes: SimpleChanges) {
-  //   if (changes.options) {
-  //      for (const prop in changes.options.currentValue) {
-  //           if (prop) {
-  //             this.cropperOptions[prop] = changes.options.currentValue[prop];
-  //           }
-  //      }
-  //   }
-  // }
   
   onCropperInit(cropper: Cropper) {
     this.cropper = cropper;
@@ -81,7 +83,7 @@ export class PageCropperComponent implements OnInit {
   }
 
   onCrop(event) {
-     console.log(event);
+    
   }
 
   onZoom(event) {

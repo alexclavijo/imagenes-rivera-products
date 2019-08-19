@@ -12,15 +12,26 @@
     ::ng-deep {
         .cropper-container {
             background: white;
-            border: 2px dashed #ccc;
+            border: 2px solid #ccc;
         }
     }
 
     &.full {
         ::ng-deep {
-            .cropper-container {
-                width: 100% !important;
-                height: 400px !important;
+            .cropper-container{
+                width: 760px !important;
+                height: 380px !important;
+            }
+
+            .cropper-modal{
+                background: white !important;
+            }
+
+            .cropper-crop-box {
+                .cropper-view-box{
+                    outline: #ccc dashed 2px !important;
+                }
+
             }
         }
     }
@@ -28,8 +39,19 @@
     &.single {
         ::ng-deep {
             .cropper-container {
-                width: 100% !important;
-                height: 400px !important;
+                width: 380px !important;
+                height: 380px !important;
+            }
+
+            .cropper-modal{
+                background: white !important;
+            }
+
+            .cropper-crop-box {
+                .cropper-view-box{
+                    outline: #ccc dashed 2px !important;
+                }
+
             }
         }
     }

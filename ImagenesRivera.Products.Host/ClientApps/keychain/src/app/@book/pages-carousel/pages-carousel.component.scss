@@ -10,7 +10,8 @@
     }
 
     .photo-slide { 
-        width: 50%;
+        width: 380px;
+        margin-left: 10px;
         float: left;
 
         &.selected {
@@ -24,9 +25,9 @@
         }
 
         .blank-page {
-            height: 400px;
+            height: 380px;
             background: white;
-            border: 2px dashed #ccc;
+            border: 2px solid #ccc;
             cursor: move;
         }
 
