@@ -1,13 +1,24 @@
 <div class="container-wrapper">
-        <div class="page-photo-container" [ngClass]="{ 'full': layout === 1, 'single': layout === 2, 'selected': selected }" >
+        <div *ngIf="layout === 1" class="page-photo-container full" [ngClass]="{ 'selected': selected }" >
                 <lib-cropper [imageFile]="imageFile" 
-                             [options]="cropperOptions"
+                             [options]="cropperFullOptions"
                              (init)="onCropperInit($event)"
                              (crop)="onCrop($event)"
                              (zoom)="onZoom($event)"
                              (fileChange)="onFileChange($event)" 
                              (fail)="onFail($event)" >
                 </lib-cropper>
-            </div>
+        </div>
+
+        <div *ngIf="layout === 2" class="page-photo-container single" [ngClass]="{ 'selected': selected }" >
+                <lib-cropper [imageFile]="imageFile" 
+                             [options]="cropperSingleOptions"
+                             (init)="onCropperInit($event)"
+                             (crop)="onCrop($event)"
+                             (zoom)="onZoom($event)"
+                             (fileChange)="onFileChange($event)" 
+                             (fail)="onFail($event)" >
+                </lib-cropper>
+        </div>
 </div>
 

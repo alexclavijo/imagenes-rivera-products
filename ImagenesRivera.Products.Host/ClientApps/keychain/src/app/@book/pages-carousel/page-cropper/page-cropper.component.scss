@@ -21,6 +21,7 @@
             .cropper-container{
                 width: 760px !important;
                 height: 380px !important;
+                box-sizing: content-box;
             }
 
             .cropper-modal{

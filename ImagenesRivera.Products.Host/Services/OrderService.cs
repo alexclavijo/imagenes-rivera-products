@@ -11,7 +11,7 @@ namespace ImagenesRivera.Products.Services
 {
     public interface IOrderService
     {
-        bool Process(Order order);
+        bool Process(Order order, List<Product> products);
         Order Get(string orderId);
         List<Order> GetOrders();
     }
@@ -26,12 +26,12 @@ namespace ImagenesRivera.Products.Services
             _notificationService = notificationService;
         }
 
-        public bool Process(Order order)
+        public bool Process(Order order, List<Product> products)
         {
             switch (order.Status)
             {
                 case OrderStatus.COMPLETED:
-                    ProcessOrderCompleted(order);
+                    ProcessOrderCompleted(order, products);
                     break;
                 case OrderStatus.APPROVED:
                     ProcessOrderApproved(order);
@@ -49,7 +49,7 @@ namespace ImagenesRivera.Products.Services
             return false;
         }
 
-        private bool ProcessOrderCompleted(Order order)
+        private bool ProcessOrderCompleted(Order order, List<Product> products)
         {
             //order.Products.ForEach(p =>
             //{

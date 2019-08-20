@@ -31,6 +31,7 @@ export class PagesCarouselComponent implements OnInit {
 
   public slides: ISlideModel[];
   public slideSelected: ISlideModel;
+  public cropperComponentSelected: PageCropperComponent;
   public cropperSelected: Cropper;
   public layoutSelected: number;
   public navIndex: number;
@@ -48,7 +49,11 @@ export class PagesCarouselComponent implements OnInit {
         const component = this.pageCroppers.find((item) => item.slideIndex === slide.index);
         if (component && component.cropper) {
             const cropper = component.cropper as Cropper;
-            const canvas = cropper.getCroppedCanvas({ fillColor: 'white', width: 591, height: 591 });
+            const canvas = cropper.getCroppedCanvas({ 
+              fillColor: 'white', 
+              width: component.layout === 1 ? 591 * 2 : 591, 
+              height: 591 
+            });
             
             canvas.toBlob((blob: Blob) => {
               observer.next({ index: slide.index, blob });
@@ -101,8 +106,8 @@ export class PagesCarouselComponent implements OnInit {
     }
 
     if(this.slideSelected.photo) {
-      const cropperComponent = this.pageCroppers.find((item) => item.slideIndex === this.slideSelected.index);
-      this.cropperSelected = cropperComponent.cropper;
+      this.cropperComponentSelected = this.pageCroppers.find((item) => item.slideIndex === this.slideSelected.index);
+      this.cropperSelected = this.cropperComponentSelected ? this.cropperComponentSelected.cropper : null;
     }
   }
 

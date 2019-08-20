@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ImagenesRivera.Products.Host.Models
 {
-    public class BookPageImageSave
+    public class BookPageImageCreate
     {       
         public int Index { get; set; }
         public IFormFile File { get; set; }

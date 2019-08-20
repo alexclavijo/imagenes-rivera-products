@@ -18,9 +18,7 @@ namespace ImagenesRivera.Products.Data.Entities
         public string Email { get; set; }
         [Required]
         public string Phone { get; set; }
-
-        public Address Address { get; set; }      
-
+        public Address Address { get; set; }  
         public List<Order> Orders { get; set; }
     }
 }

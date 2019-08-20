@@ -38,13 +38,13 @@ namespace ImagenesRivera.Products.Api.Controllers
         }
 
         /// <summary>
-        ///  Temporarly saves page image and returns a local path to be referenced later
+        ///  Temporarly saves page image (591px x 591px 300dpi => 5x5) and returns a local path to be referenced later
         /// </summary>
         /// <param name="bookFolderName"></param>
         /// <param name="pageSave"></param>
         /// <returns></returns>
         [HttpPut("{bookFolderName}/page")]
-        public ActionResult<(int index, string photoPath)> Put(string bookFolderName, [FromForm] BookPageImageSave pageSave)
+        public ActionResult<(int index, string photoPath)> Put(string bookFolderName, [FromForm] BookPageImageCreate pageSave)
         {
             var filePath = $"{UploadFolderPath}/{bookFolderName}/{pageSave.File.FileName}";
             using (Bitmap bitmap = new Bitmap(pageSave.File.OpenReadStream()))

@@ -1,4 +1,5 @@
-﻿using ImagenesRivera.Products.Models;
+﻿using ImagenesRivera.Products.Host.Models;
+using ImagenesRivera.Products.Models;
 using ImagenesRivera.Products.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -24,26 +25,25 @@ namespace ImagenesRivera.Products.Api.Controllers
         public ActionResult<IEnumerable<OrderDetails>> Get()
         {
             var orders = _orderService.GetOrders();
-                
             return Ok();
         }
 
         /// <summary>
         /// Processes an order based on client request after Paypal response 
         /// </summary>
-        /// <param name="order"></param>
+        /// <param name="orderCreate"></param>
         [HttpPost]
-        public void Post([FromBody] OrderDetails order)
+        public ActionResult Post([FromBody] OrderCreate orderCreate)
         {
             try
             {
-               // _orderService.ProcessOrder(order);
+               _orderService.Process(orderCreate.MapOrder(), orderCreate.MapProducts());
+
+                return Ok();
             }
             catch {
-
+                return BadRequest();
             }
         }
-
-       
     }
 }

@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace ImagenesRivera.Products.Host.Models
 {
-    public class PayerInfo
+    public class ProductDetails
     {
+        public string ProductType { get; set; }
+        public string ProductJsonData { get; set; }
     }
 }

@@ -32,7 +32,7 @@ namespace ImagenesRivera.Products.Api.Controllers
 
         [Route("/api/orders/{orderId}/keychain/photos-page")]
         [HttpGet]
-        //[MiddlewareFilter(typeof(JsReportPipeline))]
+        [MiddlewareFilter(typeof(JsReportPipeline))]
         public IActionResult KeyChainPhotosPage(string orderId)
         {
             var order = _orderService.Get(orderId);
@@ -40,7 +40,6 @@ namespace ImagenesRivera.Products.Api.Controllers
                 return BadRequest("Invalid Order");
 
             HttpContext.JsReportFeature().Recipe(Recipe.ChromePdf);
-
             return View(new KeyChainBookVM());
         }
     }

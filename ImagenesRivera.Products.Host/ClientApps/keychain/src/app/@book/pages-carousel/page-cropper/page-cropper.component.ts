@@ -23,24 +23,22 @@ export class PageCropperComponent implements OnInit {
   @Input()
   public options: Cropper.Options;
 
-  public cropper: any;
-  public cropperOptions: Cropper.Options;
+  public cropperSingle: Cropper;
+  public cropperSingleOptions: Cropper.Options;
+  public cropperFull: Cropper;
+  public cropperFullOptions: Cropper.Options;
 
   constructor() { }
 
   ngOnInit() {
-    this.cropperOptions =  {
+    const defaultOptions =  {
       dragMode: 'move' as Cropper.DragMode.Move,
       viewMode: 0 as Cropper.ViewMode.Free,
+      minContainerHeight: 380,
+      minCanvasHeight: 380,
+      minCropBoxHeight: 350,
       background: false, 
       autoCrop: true,
-      aspectRatio: 1/1,
-      minContainerHeight: 380,
-      minContainerWidth: 380,
-      minCanvasHeight: 380,
-      minCanvasWidth: 380,
-      minCropBoxHeight: 350,
-      minCropBoxWidth: 350,
       movable: true,
       zoomable: true,
       zoomOnTouch: false,
@@ -54,28 +52,68 @@ export class PageCropperComponent implements OnInit {
       cropBoxMovable: false,
       cropBoxResizable: false,
       toggleDragModeOnDblclick: false,
-      responsive: true,
-      ready: () => {
-        
-        this.cropper.setCanvasData({ 
-          width: 591, 
-          height: 591,
-          top: 0,
-          left: 0
-        });
-
-        this.cropper.setCropBoxData({ 
-          width: 355,
-          height: 355,
-          top: 10,
-          left: 10
-        });
-      }
+      responsive: true
     };
+
+    this.cropperSingleOptions = JSON.parse(JSON.stringify(defaultOptions));     
+    this.cropperSingleOptions.aspectRatio = 1/1;
+    this.cropperSingleOptions.minContainerWidth = 380;
+    this.cropperSingleOptions.minCanvasWidth = 380;
+    this.cropperSingleOptions.minCropBoxWidth = 350;
+    this.cropperSingleOptions.ready = () => {
+      this.setupCanvasSinglePage();
+    };
+
+    this.cropperFullOptions = JSON.parse(JSON.stringify(defaultOptions));
+    this.cropperFullOptions.aspectRatio = 2/1;
+    this.cropperFullOptions.minContainerWidth = 760;
+    this.cropperFullOptions.minCanvasWidth = 760;
+    this.cropperFullOptions.minCropBoxWidth = 700;
+    this.cropperFullOptions.ready = () => {
+      this.setupCanvasFullPage();
+    };
+  }
+
+  private setupCanvasSinglePage(): void {
+      this.cropperSingle.setCanvasData({ 
+        width: 380, 
+        height: 380,
+        top: 0,
+        left: 0
+      });
+      this.cropperSingle.setCropBoxData({ 
+        width: 355,
+        height: 355,
+        top: 10,
+        left: 10
+      });
+  }
+
+  private setupCanvasFullPage(): void {
+    this.cropperFull.setCanvasData({ 
+      width: 760, 
+      height: 380,
+      top: 0,
+      left: 0
+    });
+    this.cropperFull.setCropBoxData({ 
+      width: 710,
+      height: 355,
+      left: 25,
+      top: 12.5
+    });
+  }
+
+  public get cropper(): Cropper {
+    return this.layout === 1 ? this.cropperFull : this.cropperSingle;
   }
   
   onCropperInit(cropper: Cropper) {
-    this.cropper = cropper;
+    if(this.layout === 1) {
+      this.cropperFull = cropper;
+    } else {
+      this.cropperSingle = cropper;
+    }
   }
 
   onFileChange(file: File) {
