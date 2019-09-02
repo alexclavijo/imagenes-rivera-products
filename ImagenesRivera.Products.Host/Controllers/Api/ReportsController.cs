@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ImagenesRivera.Products.Api.Controllers
 {
     [Route("api/reports")]
+    [ApiController]
     public class ReportsController : Controller
     {
 
@@ -16,9 +17,8 @@ namespace ImagenesRivera.Products.Api.Controllers
         {
             _orderService = orderService;
         }
-
-        [Route("/api/orders/{orderId}/invoice")]
-        [HttpGet]
+       
+        [HttpGet("/api/orders/{orderId}/invoice")]
         [MiddlewareFilter(typeof(JsReportPipeline))]
         public IActionResult OrderInvoice(string orderId)
         {
@@ -30,8 +30,8 @@ namespace ImagenesRivera.Products.Api.Controllers
             return View();
         }
 
-        [Route("/api/orders/{orderId}/keychain/photos-page")]
-        [HttpGet]
+      
+        [HttpGet("/api/orders/{orderId}/keychain/photos-page")]
         [MiddlewareFilter(typeof(JsReportPipeline))]
         public IActionResult KeyChainPhotosPage(string orderId)
         {

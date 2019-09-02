@@ -11,5 +11,10 @@ namespace ImagenesRivera.Products.Data.Entities
         public string City { get; set; }
         [Required]
         public string ZipCode { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Address1} {Address2 ?? string.Empty} {City} {ZipCode}";
+        }
     }
 }

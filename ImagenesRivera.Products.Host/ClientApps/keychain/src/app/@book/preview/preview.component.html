@@ -1,0 +1,8 @@
+<dialog class="mdl-dialog">
+  <button (click)="close()" class="close-btn">
+      <i class="material-icons">clear</i>
+  </button>
+  <div class="mdl-dialog__content">
+      <iframe *ngIf="bookFolderName"  [src]="url ? url : null" frameBorder="0" (load)="onIframeLoad()"></iframe>
+  </div>
+</dialog>

@@ -1,3 +1,4 @@
+import { PreviewComponent } from './preview/preview.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BookComponent } from './book.component';
 import { SharedModule } from '../shared/shared.module';
@@ -21,7 +22,8 @@ import { CreatePopupComponent } from './create-popup/create-popup.component';
     PageCropperComponent, 
     ImageItemComponent, 
     PageLayoutsComponent, 
-    CreatePopupComponent
+    CreatePopupComponent,
+    PreviewComponent
   ],
   exports: [BookComponent],
   imports: [

@@ -23,8 +23,14 @@
 
   <ItemGroup>
     <Folder Include="ClientApps\admin\" />
+    <Folder Include="..\..\..\..\..\%2540lex\imagenesrivera\Source\ImagenesRivera.Products\ImagenesRivera.Products.Host\Views\SPAs\Pages\" />
     <Folder Include="wwwroot\keychain\" />
     <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\vendor\jquery.bookblock.min.js" />
+    <None Include="wwwroot\assets\vendor\jquery.min.js" />
   </ItemGroup>
 
 </Project>

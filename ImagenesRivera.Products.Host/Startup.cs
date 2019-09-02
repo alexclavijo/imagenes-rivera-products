@@ -63,6 +63,7 @@ namespace ImagenesRivera.Products.Host
             {
                 engineOptions.ViewLocationFormats.Add("/Views/SPAs/{0}.cshtml");
                 engineOptions.ViewLocationFormats.Add("/Views/SPAs/Shared/{0}.cshtml");
+                engineOptions.ViewLocationFormats.Add("/Views/Pages/{0}.cshtml");
                 engineOptions.ViewLocationFormats.Add("/Views/Reports/{0}.cshtml");
             });
 

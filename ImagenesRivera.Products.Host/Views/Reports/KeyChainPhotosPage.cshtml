@@ -17,14 +17,20 @@
                                 if (page.IsFullPage)
                                 {
                                     <tr>
-                                        <td width="100%"><img src="" /></td>
+                                        <td width="100%">
+                                            @Html.Raw($"<img src='{page.Photo1}' />");
+                                        </td>
                                     </tr>
-                                }
+                                                }
                                 else
                                 {
                                     <tr>
-                                        <td width="50%"><img src="" /></td>
-                                        <td width="50%"><img src="" /></td>
+                                        <td width="50%">
+                                            @Html.Raw($"<img src='{page.Photo1}' />");
+                                        </td>
+                                        <td width="50%">
+                                            @Html.Raw($"<img src='{page.Photo2}' />");
+                                        </td>
                                     </tr>
                                 }
                             }
@@ -32,7 +38,7 @@
                     </table>
                 </td>
 
-                <td width="50%"> 
+                <td width="50%">
                     <table width="100%">
                         @{
 
@@ -41,14 +47,20 @@
                                 if (page.IsFullPage)
                                 {
                                     <tr>
-                                        <td width="100%"><img src="" /></td>
+                                        <td width="100%">
+                                            @Html.Raw($"<img src='{page.Photo1}' />");
+                                        </td>
                                     </tr>
                                 }
                                 else
                                 {
                                     <tr>
-                                        <td width="50%"><img src="" /></td>
-                                        <td width="50%"><img src="" /></td>
+                                        <td width="50%">
+                                            @Html.Raw($"<img src='{page.Photo1}' />");
+                                        </td>
+                                        <td width="50%">
+                                            @Html.Raw($"<img src='{page.Photo2}' />");
+                                        </td>
                                     </tr>
                                 }
                             }
@@ -56,7 +68,7 @@
                     </table>
                 </td>
             </tr>
-         </tbody>
+        </tbody>
     </table>
 </body>
 </html>

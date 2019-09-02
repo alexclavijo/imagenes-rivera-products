@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   pixieScriptUrl: '/assets/pixie.min.js',
-  bookPagesNumber: 3
+  bookPagesNumber: 2
 };
 
 /*

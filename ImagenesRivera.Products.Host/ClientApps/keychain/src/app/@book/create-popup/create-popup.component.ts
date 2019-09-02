@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { AppStateService } from '../../shared/appstate.service';
 
@@ -16,7 +17,8 @@ export class CreatePopupComponent implements OnInit {
   public bookCreatedEvent = new EventEmitter();
 
   constructor(private state: AppStateService,
-              private element: ElementRef) { }
+              private element: ElementRef,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.dialogRef = this.element.nativeElement.querySelector('dialog');
@@ -29,6 +31,7 @@ export class CreatePopupComponent implements OnInit {
 
   close(): void {
     this.dialogRef.close();
+    this.router.navigate(['/']);
   }
 
   createClick(): void {

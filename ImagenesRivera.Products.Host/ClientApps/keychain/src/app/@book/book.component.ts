@@ -7,6 +7,7 @@ import { IPage } from '../models/page';
 import { AppStateService } from '../shared/appstate.service';
 import { CreatePopupComponent } from './create-popup/create-popup.component';
 import { environment } from '../../environments/environment';
+import { PreviewComponent } from './preview/preview.component';
 
 @Component({
   selector: 'app-book',
@@ -21,6 +22,9 @@ export class BookComponent implements OnInit, AfterViewInit {
 
   @ViewChild(CreatePopupComponent, { static: false }) 
   private createPopup: CreatePopupComponent;
+
+  @ViewChild(PreviewComponent, { static: false }) 
+  private bookPreview: PreviewComponent;
 
   public book: IBook;
   public pagesNumber: number; 
@@ -52,8 +56,12 @@ export class BookComponent implements OnInit, AfterViewInit {
         });
   }
 
+  previewClick() {
+    this.bookPreview.open();
+  }
+
   buyAlbumClick() {
-    this.state.appBusy.next(true);
+    //this.state.appBusy.next(true);
     const bookPages: Array<IPageSave> = [];
     this.carousel.cropPageCanvas().subscribe((cropped: ICroppedCanvas) => {
         bookPages.push({ 
@@ -63,11 +71,11 @@ export class BookComponent implements OnInit, AfterViewInit {
         });
     },(error) => {
          console.log('Error occurred: ' + error);
-         this.state.appBusy.next(false);
+        // this.state.appBusy.next(false);
     }, () => {
         this.bookService.saveBookPages(this.book.folderName, bookPages).subscribe((pages: IPage[]) => {
           this.book.pages = pages.sort((a,b) => a.index > b.index ? 1 : a.index < b.index ? -1 : 0);
-          this.state.appBusy.next(false);
+        //  this.state.appBusy.next(false);
         });
     });
   }

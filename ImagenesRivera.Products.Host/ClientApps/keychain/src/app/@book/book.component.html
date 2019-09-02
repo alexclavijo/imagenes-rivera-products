@@ -18,7 +18,7 @@
         </div>
     </div>
     <div class="create-order-section">
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
+        <button (click)="previewClick()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect">
                 <i class="material-icons">visibility</i>
                 Preview
         </button>
@@ -29,3 +29,6 @@
     </div>
 </div>
 <app-book-createpopup (bookCreatedEvent)="bookCreatedEventHandler($event)"></app-book-createpopup>
+<ng-template [ngIf]="book?.folderName">
+    <app-book-preview [bookFolderName]="book.folderName"></app-book-preview>
+</ng-template>

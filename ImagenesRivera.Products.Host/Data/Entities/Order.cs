@@ -17,10 +17,8 @@ namespace ImagenesRivera.Products.Data.Entities
         public OrderStatus Status { get; set; }
         public int ShippingId { get; set; }
         public Shipping Shipping { get; set; }
-
         public int PayerId { get; set; }
         public Payer Payer { get; set; }
         public List<ProductOrders> Products { get; set; }
-
     }
 }
