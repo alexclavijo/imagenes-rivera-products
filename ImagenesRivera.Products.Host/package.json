@@ -44,7 +44,7 @@
     "@types/node": "~8.9.4",
     "codelyzer": "^5.0.1",
     "del": "4.1.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-concat": "2.6.1",
     "gulp-minifier": "1.2.2",
     "gulp-rename": "1.4.0",
